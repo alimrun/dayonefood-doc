@@ -122,7 +122,15 @@
                                     <li><a href="#line1_2">Folder Structure</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#line_features">System Features</a></li>
+                            <li><a href="#line_features">System Features</a>
+                                <ul class="nav">
+                                    <li><a href="#line_feat_1">Order & Delivery</a></li>
+                                    <li><a href="#line_feat_2">Food Management</a></li>
+                                    <li><a href="#line_feat_3">Marketing & Retention</a></li>
+                                    <li><a href="#line_feat_4">User & System</a></li>
+                                    <li><a href="#line_feat_5">Reports & Analytics</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#line2">Prerequisites</a>
                                 <ul class="nav">
                                     <li><a href="#line2_1">Server Requirements</a></li>
@@ -160,6 +168,7 @@
                                     <li><a href="#line_server_2">Cron Job</a></li>
                                     <li><a href="#line_server_3">Queue Worker</a></li>
                                     <li><a href="#line_server_4">Symlink</a></li>
+                                    <li><a href="#line_server_5">Optimization</a></li>
                                 </ul>
                             </li>
                             <li><a href="#line6">Deployment</a>
@@ -590,7 +599,11 @@ upload_max_filesize = 100M
                                 </pre>
 
                                 <h4 id="line_server_3">Queue Worker (Supervisor)</h4>
-                                <p>Queues allow you to process time-consuming tasks (like sending emails) in the background. We recommend using <strong>Supervisor</strong> to keep the queue worker running.</p>
+                                <p>To ensure emails and notifications are sent instantly without freezing the user interface, you must use a Queue Worker. We recommend <strong>Supervisor</strong> to keep this worker running in the background.</p>
+
+                                <div class="alert alert-info">
+                                    <strong>Prerequisite:</strong> Ensure your <code>.env</code> file has <code>QUEUE_CONNECTION=database</code>.
+                                </div>
                                 
                                 <p><strong>1. Install Supervisor:</strong></p>
                                 <pre class="brush: bash">
@@ -598,11 +611,11 @@ sudo apt-get install supervisor
                                 </pre>
 
                                 <p><strong>2. Create Configuration File:</strong></p>
-                                <p>Create a new file at <code>/etc/supervisor/conf.d/dayonefood-worker.conf</code>:</p>
+                                <p>Create a new configuration file at <code>/etc/supervisor/conf.d/dayonefood-worker.conf</code>:</p>
                                 <pre class="brush: plain">
 [program:dayonefood-worker]
 process_name=%(program_name)s_%(process_num)02d
-command=php /path-to-your-project/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+command=php /path/to/your/project/artisan queue:work --sleep=3 --tries=3 --max-time=3600
 autostart=true
 autorestart=true
 stopasgroup=true
@@ -610,21 +623,49 @@ killasgroup=true
 user=www-data
 numprocs=2
 redirect_stderr=true
-stdout_logfile=/path-to-your-project/storage/logs/worker.log
+stdout_logfile=/path/to/your/project/storage/logs/worker.log
+stopwaitsecs=3600
                                 </pre>
+                                <div class="alert alert-warning">
+                                    <strong>Note:</strong> Replace <code>/path/to/your/project/</code> with the actual path to your project (e.g., <code>/var/www/dayonefood</code>).
+                                </div>
 
-                                <p><strong>3. Start Supervisor:</strong></p>
+                                <p><strong>3. Start & Manage Supervisor:</strong></p>
+                                <p>Run the following commands to load the config and start the process:</p>
                                 <pre class="brush: bash">
 sudo supervisorctl reread
 sudo supervisorctl update
 sudo supervisorctl start dayonefood-worker:*
                                 </pre>
 
+                                <p><strong>Useful Commands:</strong></p>
+                                <ul class="intro-list">
+                                    <li>Check Status: <code>sudo supervisorctl status</code></li>
+                                    <li>Restart Workers: <code>sudo supervisorctl restart dayonefood-worker:*</code></li>
+                                    <li>Stop Workers: <code>sudo supervisorctl stop dayonefood-worker:*</code></li>
+                                </ul>
+
                                 <h4 id="line_server_4">Storage Symlink</h4>
                                 <p>Ensure your storage folder is linked to public. If images are missing, run:</p>
                                 <pre class="brush: bash">
 php artisan storage:link
                                 </pre>
+
+                                <h4 id="line_server_5">Production Optimization</h4>
+                                <p>Once your application is live, run these commands to optimize performance:</p>
+                                <pre class="brush: bash">
+# Cache Configuration
+php artisan config:cache
+
+# Cache Routes
+php artisan route:cache
+
+# Cache Views
+php artisan view:cache
+                                </pre>
+                                <div class="alert alert-danger">
+                                    <strong>Warning:</strong> If you change any <code>.env</code> value or add new routes, you MUST run <code>php artisan optimize:clear</code> followed by these commands again.
+                                </div>
                             </div>
                         </div>
                     </section>
