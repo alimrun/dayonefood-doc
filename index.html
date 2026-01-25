@@ -131,28 +131,35 @@
                             </li>
                             <li><a href="#line3">Quick Start Guide</a>
                                 <ul class="nav">
-                                    <li><a href="#line3_1">Database Setup</a></li>
-                                    <li><a href="#line3_2">Env Configuration</a></li>
+                                    <li><a href="#line3_1">Pre-flight Checklist</a></li>
+                                    <li><a href="#line3_2">The 4-Step Installation</a></li>
+                                    <li><a href="#line3_3">Post-Installation</a></li>
                                 </ul>
                             </li>
                             <li><a href="#line4">Installation Process</a>
                                 <ul class="nav">
-                                    <li><a href="#line4_1">Extraction & Setup</a></li>
-                                    <li><a href="#line4_2">Asset Building</a></li>
+                                    <li><a href="#line4_1">Database Creation</a></li>
+                                    <li><a href="#line4_2">Extraction & Setup</a></li>
+                                    <li><a href="#line4_3">Automated Wizard</a></li>
                                 </ul>
                             </li>
                             <li><a href="#line5">Configuration</a>
                                 <ul class="nav">
                                     <li><a href="#line5_1">Mail Setup</a></li>
                                     <li><a href="#line5_2">Payment Gateways</a></li>
-                                    <li><a href="#line5_3">Push Notifications</a></li>
-                                    <li><a href="#line5_4">Third Party APIs</a></li>
+                                    <li><a href="#line5_3">SMS Gateways</a></li>
+                                    <li><a href="#line5_4">Push Notifications</a></li>
+                                    <li><a href="#line5_5">Social Logins</a></li>
+                                    <li><a href="#line5_6">AI Content</a></li>
+                                    <li><a href="#line5_7">Other APIs</a></li>
                                 </ul>
                             </li>
                             <li><a href="#line_server">Server Configuration</a>
                                 <ul class="nav">
-                                    <li><a href="#line_server_1">Cron Job</a></li>
-                                    <li><a href="#line_server_2">Queue Worker</a></li>
+                                    <li><a href="#line_server_1">PHP Config</a></li>
+                                    <li><a href="#line_server_2">Cron Job</a></li>
+                                    <li><a href="#line_server_3">Queue Worker</a></li>
+                                    <li><a href="#line_server_4">Symlink</a></li>
                                 </ul>
                             </li>
                             <li><a href="#line6">Deployment</a>
@@ -174,8 +181,7 @@
                             <li><a href="#line8">Help & Support</a>
                                 <ul class="nav">
                                     <li><a href="#line8_1">Support Policy</a></li>
-                                    <li><a href="#line8_2">How to Get Support</a></li>
-                                    <li><a href="#line8_3">Rate Us</a></li>
+                                    <li><a href="#line8_2">Before Contacting Us</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -355,14 +361,36 @@ XML PHP Extension
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 id="line3_1">Database Setup</h4>
-                                <p>Create a new database for the application. You can use phpMyAdmin or the command line. You will need the database credentials (name, user, password) for the installation wizard.</p>
-                                <pre class="brush: sql">
-CREATE DATABASE dayonefood_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-                                </pre>
+                                <p>Get your food delivery business running in <strong>5 minutes</strong>. Follow this high-level overview to go from zero to hero.</p>
+                                
+                                <h4 id="line3_1">1. Pre-flight Checklist</h4>
+                                <ul class="intro-list">
+                                    <li><strong>Domain Name & Hosting:</strong> Ensure you have a domain and a server (cPanel/VPS) meeting the <a href="#line2">Prerequisites</a>.</li>
+                                    <li><strong>Purchase Code:</strong> Have your CodeCanyon purchase code ready.</li>
+                                    <li><strong>Database:</strong> Create an empty MySQL database (utf8mb4).</li>
+                                </ul>
 
-                                <h4 id="line3_2">Env Configuration</h4>
-                                <p>You do <strong>NOT</strong> need to configure the <code>.env</code> file manually. The automated installer will handle this for you in the next steps.</p>
+                                <h4 id="line3_2">2. The 4-Step Installation</h4>
+                                <p>We use an automated wizard, so no coding is required.</p>
+                                <ol class="intro-list">
+                                    <li><strong>Upload:</strong> Upload and unzip <code>install.zip</code> to your server.</li>
+                                    <li><strong>Point Domain:</strong> Set your domain's document root to the <code>/public</code> folder.</li>
+                                    <li><strong>Run Wizard:</strong> Visit your website. The installer will launch automatically.</li>
+                                    <li><strong>Configure:</strong> Enter Database credentials and Purchase Code when prompted.</li>
+                                </ol>
+
+                                <h4 id="line3_3">3. Post-Installation First Steps</h4>
+                                <p>Once logged into the Admin Panel, complete these essential tasks:</p>
+                                <ul class="intro-list">
+                                    <li><strong>Business Settings:</strong> Go to Settings > Business Setup and configure your store details.</li>
+                                    <li><strong>Mail Config:</strong> Go to Settings > 3rd Party Setup > Mail Config to ensure emails work.</li>
+                                    <li><strong>Cron Job:</strong> Set up the cron job on your server for background tasks.</li>
+                                    <li><strong>Add Zone & Food:</strong> Create a delivery zone and add your first food item.</li>
+                                </ul>
+
+                                <div class="alert alert-info">
+                                    <strong>Ready for details?</strong> Jump to the <a href="#line4">Installation Process</a> section for the step-by-step walkthrough.
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -380,7 +408,31 @@ CREATE DATABASE dayonefood_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
                                     <strong>Important:</strong> You will receive a <code>install.zip</code> file. This package includes all dependencies (vendor, node_modules) and built assets.
                                 </div>
 
-                                <h4 id="line4_1">Extraction & Setup</h4>
+                                <h4 id="line4_1">1. Database Creation</h4>
+                                <p>Before installing the software, you must create a database. Most hostings use cPanel. Here is how to do it:</p>
+                                
+                                <p><strong>Step A: Create Database</strong></p>
+                                <ol class="intro-list">
+                                    <li>Login to your <strong>cPanel</strong>.</li>
+                                    <li>Go to <strong>MySQL Database Wizard</strong> (or MySQL Databases).</li>
+                                    <li>Enter a name for your database (e.g., <code>dayonefood_db</code>) and click <strong>Next Step</strong>.</li>
+                                </ol>
+
+                                <p><strong>Step B: Create User</strong></p>
+                                <ol class="intro-list">
+                                    <li>Enter a <strong>Username</strong> (e.g., <code>dayonefood_user</code>).</li>
+                                    <li>Enter a strong <strong>Password</strong> (or generate one).</li>
+                                    <li>Click <strong>Create User</strong>.</li>
+                                </ol>
+
+                                <p><strong>Step C: Assign Privileges</strong></p>
+                                <ol class="intro-list">
+                                    <li>On the next screen, check <strong>ALL PRIVILEGES</strong>.</li>
+                                    <li>Click <strong>Make Changes</strong>.</li>
+                                    <li><strong>Note Down:</strong> Database Name, Username, and Password. You will need these in the wizard.</li>
+                                </ol>
+
+                                <h4 id="line4_2">2. Extraction & Setup</h4>
                                 <ol class="intro-list">
                                     <li><strong>Upload & Unzip:</strong> Upload `install.zip` to your server's root directory (e.g., public_html) and extract it.</li>
                                     <li><strong>Domain Setup:</strong> Point your domain or subdomain to the <code>/public</code> folder. This is critical for security and functionality.</li>
@@ -393,7 +445,7 @@ CREATE DATABASE dayonefood_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
                                     </li>
                                 </ol>
 
-                                <h4 id="line4_2">Automated Installation Wizard</h4>
+                                <h4 id="line4_3">3. Automated Installation Wizard</h4>
                                 <p>Once extracted and permissions are set, open your browser and visit your domain (e.g., <code>http://yourdomain.com</code>). You will be redirected to the installation wizard.</p>
                                 
                                 <p><strong>Step-by-Step Wizard:</strong></p>
@@ -439,15 +491,38 @@ CREATE DATABASE dayonefood_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
                                 <h4 id="line5_2">Payment Gateways</h4>
                                 <p>Go to <strong>Settings > 3rd Party Setup > Payment Methods</strong>.</p>
-                                <p>Here you can activate/deactivate gateways and switch between <strong>Test (Sandbox)</strong> and <strong>Live</strong> modes.</p>
-                                <ul class="intro-list">
-                                    <li>Select a Gateway (e.g., Stripe, PayPal).</li>
-                                    <li>Toggle the status to <strong>Active</strong>.</li>
-                                    <li>Enter your <strong>API Key / Client ID</strong> and <strong>Secret</strong>.</li>
-                                    <li>Click <strong>Save</strong>.</li>
+                                <p>Here you can activate/deactivate gateways and switch between <strong>Test (Sandbox)</strong> and <strong>Live</strong> modes. Supported gateways include:</p>
+                                <ul class="intro-list" style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                                    <li>Stripe</li>
+                                    <li>PayPal</li>
+                                    <li>Razorpay</li>
+                                    <li>Flutterwave</li>
+                                    <li>Paystack</li>
+                                    <li>MercadoPago</li>
+                                    <li>SSLCommerz</li>
+                                    <li>Paytm</li>
+                                    <li>PayTabs</li>
+                                    <li>SenangPay</li>
+                                    <li>Bkash</li>
+                                    <li>Nagad</li>
+                                    <li>LiqPay</li>
+                                    <li>Paymob Accept</li>
                                 </ul>
 
-                                <h4 id="line5_3">Push Notifications (Firebase)</h4>
+                                <h4 id="line5_3">SMS Gateways</h4>
+                                <p>Go to <strong>Settings > 3rd Party Setup > SMS Config</strong>.</p>
+                                <p>Configure your preferred SMS provider for OTPs and notifications. Supported providers:</p>
+                                <ul class="intro-list">
+                                    <li>Twilio</li>
+                                    <li>Nexmo (Vonage)</li>
+                                    <li>Msg91</li>
+                                    <li>2Factor</li>
+                                    <li>Releans</li>
+                                    <li>Alphanet SMS</li>
+                                    <li>Firebase OTP (Free)</li>
+                                </ul>
+
+                                <h4 id="line5_4">Push Notifications (Firebase)</h4>
                                 <p>Go to <strong>Settings > Firebase Setup</strong>.</p>
                                 <p>You need to configure your Firebase project credentials here for Push Notifications and OTPs.</p>
                                 <ul class="intro-list">
@@ -461,12 +536,27 @@ CREATE DATABASE dayonefood_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
                                     <li><strong>Service Account File:</strong> Upload the <code>service-account.json</code> file generated from Firebase (Project Settings > Service Accounts).</li>
                                 </ul>
 
-                                <h4 id="line5_4">Third Party APIs (SMS & Maps)</h4>
+                                <h4 id="line5_5">Social Logins</h4>
+                                <p>Go to <strong>Settings > 3rd Party Setup > Social Media</strong>.</p>
+                                <p>Enable One-Click Login for customers using their existing accounts.</p>
+                                <ul class="intro-list">
+                                    <li><strong>Google:</strong> Requires Client ID and Client Secret from Google Cloud Console.</li>
+                                    <li><strong>Facebook:</strong> Requires App ID and App Secret from Meta for Developers.</li>
+                                </ul>
+
+                                <h4 id="line5_6">AI Content Generation</h4>
+                                <p>Go to <strong>Settings > 3rd Party Setup > OpenAI</strong>.</p>
+                                <p>Enable AI features to automatically generate food descriptions and names.</p>
+                                <ul class="intro-list">
+                                    <li><strong>OpenAI API Key:</strong> Enter your API Key from OpenAI Platform.</li>
+                                    <li><strong>Organization ID:</strong> (Optional) Your OpenAI Organization ID.</li>
+                                </ul>
+
+                                <h4 id="line5_7">Other APIs (Maps & Recaptcha)</h4>
                                 <p>Go to <strong>Settings > 3rd Party Setup > Other Configurations</strong>.</p>
                                 <ul class="intro-list">
-                                    <li><strong>SMS Gateways:</strong> Configure providers like Twilio, Msg91, etc.</li>
-                                    <li><strong>Google Map:</strong> Enter your Google Maps API Key.</li>
-                                    <li><strong>Recaptcha:</strong> Configure Google Recaptcha keys for security.</li>
+                                    <li><strong>Google Map:</strong> Enter your Google Maps API Key (Client & Server keys). Essential for location-based features.</li>
+                                    <li><strong>Recaptcha:</strong> Configure Google Recaptcha (v2/v3) Site Key and Secret Key for security against bots.</li>
                                 </ul>
                             </div>
                         </div>
@@ -483,19 +573,32 @@ CREATE DATABASE dayonefood_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
                             <div class="col-md-12">
                                 <p>For a production environment, you must configure the following system processes.</p>
 
-                                <h4 id="line_server_1">Cron Job (Scheduler)</h4>
+                                <h4 id="line_server_1">PHP Configuration (php.ini)</h4>
+                                <p>To ensure smooth operation, especially for image uploads and processing, update your <code>php.ini</code> with these values:</p>
+                                <pre class="brush: plain">
+max_execution_time = 300
+max_input_time = 300
+memory_limit = 512M
+post_max_size = 100M
+upload_max_filesize = 100M
+                                </pre>
+
+                                <h4 id="line_server_2">Cron Job (Scheduler)</h4>
                                 <p>The scheduler is responsible for running background tasks. Add the following entry to your server's Crontab:</p>
                                 <pre class="brush: bash">
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
                                 </pre>
 
-                                <h4 id="line_server_2">Queue Worker</h4>
-                                <p>Queues allow you to process time-consuming tasks (like sending emails) in the background. We recommend using Supervisor to keep the queue worker running.</p>
-                                <p><strong>Command to run manually:</strong></p>
+                                <h4 id="line_server_3">Queue Worker (Supervisor)</h4>
+                                <p>Queues allow you to process time-consuming tasks (like sending emails) in the background. We recommend using <strong>Supervisor</strong> to keep the queue worker running.</p>
+                                
+                                <p><strong>1. Install Supervisor:</strong></p>
                                 <pre class="brush: bash">
-php artisan queue:work
+sudo apt-get install supervisor
                                 </pre>
-                                <p><strong>Supervisor Configuration (Recommended):</strong></p>
+
+                                <p><strong>2. Create Configuration File:</strong></p>
+                                <p>Create a new file at <code>/etc/supervisor/conf.d/dayonefood-worker.conf</code>:</p>
                                 <pre class="brush: plain">
 [program:dayonefood-worker]
 process_name=%(program_name)s_%(process_num)02d
@@ -508,6 +611,19 @@ user=www-data
 numprocs=2
 redirect_stderr=true
 stdout_logfile=/path-to-your-project/storage/logs/worker.log
+                                </pre>
+
+                                <p><strong>3. Start Supervisor:</strong></p>
+                                <pre class="brush: bash">
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start dayonefood-worker:*
+                                </pre>
+
+                                <h4 id="line_server_4">Storage Symlink</h4>
+                                <p>Ensure your storage folder is linked to public. If images are missing, run:</p>
+                                <pre class="brush: bash">
+php artisan storage:link
                                 </pre>
                             </div>
                         </div>
@@ -697,47 +813,73 @@ php artisan storage:link
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="intro1">
-                                    <p>Thank you for purchasing <strong>DayOneFood</strong>. We strive to provide the best support experience for our customers on CodeCanyon.</p>
+                                    <p class="lead">Thank you for purchasing <strong>DayOneFood</strong>. We are dedicated to providing you with the best support experience.</p>
                                     
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="alert alert-info" role="alert" style="background-color: #f0f8ff; border-color: #bce8f1; color: #31708f;">
+                                                <h4 class="alert-heading" style="margin-top: 0;"><i class="fa fa-life-ring"></i> Need Assistance?</h4>
+                                                <p>If you have any questions or need help with installation/configuration, feel free to reach out to us directly.</p>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <p><i class="fa fa-envelope fa-lg"></i> <strong>Email Support:</strong><br>
+                                                        <a href="mailto:thedayonesoft@gmail.com" style="font-weight: bold;">thedayonesoft@gmail.com</a></p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p><i class="fa fa-whatsapp fa-lg"></i> <strong>WhatsApp Support:</strong><br>
+                                                        <a href="https://wa.me/8801601666058" target="_blank" style="font-weight: bold;">+880 1601-666058</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <h4 id="line8_1">Support Policy</h4>
-                                    <p>As per <a href="https://themeforest.net/page/item_support_policy" target="_blank">Envato's Item Support Policy</a>, your purchase includes 6 months of support. You can extend this to 12 months at the time of purchase or anytime later.</p>
+                                    <p>As per <a href="https://themeforest.net/page/item_support_policy" target="_blank">Envato's Item Support Policy</a>, we provide support for the following:</p>
                                     
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <strong>What's Included:</strong>
-                                            <ul class="intro-list">
-                                                <li><i class="fa fa-check text-success"></i> Answering technical questions about the item's features</li>
-                                                <li><i class="fa fa-check text-success"></i> Assistance with reported bugs and issues</li>
-                                                <li><i class="fa fa-check text-success"></i> Help with included 3rd party assets</li>
-                                            </ul>
+                                            <div class="panel panel-success" style="border: 1px solid #d6e9c6;">
+                                                <div class="panel-heading" style="background-color: #dff0d8; color: #3c763d; padding: 10px 15px;">
+                                                    <h3 class="panel-title" style="margin-top: 0; font-size: 16px;"><i class="fa fa-check-circle"></i> What's Included</h3>
+                                                </div>
+                                                <div class="panel-body" style="padding: 15px;">
+                                                    <ul class="fa-ul" style="margin-left: 20px;">
+                                                        <li><i class="fa-li fa fa-check text-success"></i> Technical questions about item features</li>
+                                                        <li><i class="fa-li fa fa-check text-success"></i> Assistance with reported bugs/issues</li>
+                                                        <li><i class="fa-li fa fa-check text-success"></i> Help with included 3rd party assets</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <strong>What's NOT Included:</strong>
-                                            <ul class="intro-list">
-                                                <li><i class="fa fa-times text-danger"></i> Customization services</li>
-                                                <li><i class="fa fa-times text-danger"></i> Installation services (unless purchased separately)</li>
-                                                <li><i class="fa fa-times text-danger"></i> Server setup or hosting issues</li>
-                                            </ul>
+                                            <div class="panel panel-danger" style="border: 1px solid #ebccd1;">
+                                                <div class="panel-heading" style="background-color: #f2dede; color: #a94442; padding: 10px 15px;">
+                                                    <h3 class="panel-title" style="margin-top: 0; font-size: 16px;"><i class="fa fa-times-circle"></i> What's NOT Included</h3>
+                                                </div>
+                                                <div class="panel-body" style="padding: 15px;">
+                                                    <ul class="fa-ul" style="margin-left: 20px;">
+                                                        <li><i class="fa-li fa fa-times text-danger"></i> Customization services</li>
+                                                        <li><i class="fa-li fa fa-times text-danger"></i> Installation services (unless purchased)</li>
+                                                        <li><i class="fa-li fa fa-times text-danger"></i> Server setup or hosting issues</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <h4 id="line8_2">How to Get Support</h4>
-                                    <p>If you encounter any issues, please follow these steps before contacting us:</p>
+                                    <h4 id="line8_2">Before Contacting Us</h4>
+                                    <p>To speed up your support request, please check the following:</p>
                                     <ol class="intro-list">
-                                        <li><strong>Check the Docs:</strong> Read this documentation thoroughly.</li>
-                                        <li><strong>Search Comments:</strong> Check the item's comments section on CodeCanyon for similar issues.</li>
-                                        <li><strong>Open a Ticket:</strong> If the issue persists, contact us via our <a href="https://codecanyon.net/user/dayonesoft" target="_blank">CodeCanyon Profile Page</a> using the contact form.</li>
+                                        <li><strong>Documentation:</strong> Read this documentation thoroughly.</li>
+                                        <li><strong>Troubleshooting:</strong> Check the <a href="#line7">Troubleshooting</a> section.</li>
+                                        <li><strong>Comments:</strong> Search the CodeCanyon comments for similar issues.</li>
                                     </ol>
 
-                                    <div class="alert alert-info">
+                                    <div class="alert alert-warning">
                                         <strong>Support Hours:</strong> Monday to Friday, 09:00 AM - 06:00 PM (GMT). We usually respond within 24-48 business hours.
                                     </div>
-
-                                    <h4 id="line8_3">Rate Us</h4>
-                                    <p>If you like <strong>DayOneFood</strong>, please leave us a <strong>5-star rating</strong> on CodeCanyon! It helps us release more updates and features.</p>
-                                    <p>
-                                        <a href="https://codecanyon.net/downloads" target="_blank" class="btn btn-primary">Rate on CodeCanyon</a>
-                                    </p>
                                 </div>
                             </div>
                         </div>
