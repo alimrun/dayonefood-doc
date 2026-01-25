@@ -73,9 +73,4 @@
     VIDEO FIX -->
     =============================================== */
 
-    $('.docs-sidebar>nav>li>a').click(function() {
-        $('.docs-sidebar>nav>li').removeClass('active');
-        $(this).parent().addClass('active');
-    });
-
 })(jQuery);

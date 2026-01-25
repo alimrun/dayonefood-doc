@@ -119,7 +119,7 @@ html #mode .dark {
 }
 
 .docs-sidebar .nav .nav > li > a {
-    padding-left: 30px;
+    padding-left: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 13px;
@@ -134,4 +134,32 @@ html.dark .docs-sidebar .nav .nav > li > a:hover,
 html.dark .docs-sidebar .nav .nav > li.active > a {
     color: #fff;
     border-left: 2px solid #F16811;
+}
+
+/* Sidebar Affix Width Fix */
+.docs-sidebar.affix {
+    position: fixed; 
+    top: 30px;
+}
+
+.docs-sidebar.affix-bottom {
+    position: absolute;
+}
+
+@media (min-width: 992px) {
+    .docs-sidebar.affix {
+        width: 213px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .docs-sidebar.affix {
+        width: 263px;
+    }
+}
+
+/* Ensure sidebar is scrollable if content is too tall */
+.docs-sidebar.affix {
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
 }
