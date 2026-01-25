@@ -122,6 +122,7 @@
                                     <li><a href="#line1_2">Folder Structure</a></li>
                                 </ul>
                             </li>
+                            <li><a href="#line_features">System Features</a></li>
                             <li><a href="#line2">Prerequisites</a>
                                 <ul class="nav">
                                     <li><a href="#line2_1">Server Requirements</a></li>
@@ -145,6 +146,13 @@
                                     <li><a href="#line5_1">Mail Setup</a></li>
                                     <li><a href="#line5_2">Payment Gateways</a></li>
                                     <li><a href="#line5_3">Push Notifications</a></li>
+                                    <li><a href="#line5_4">Third Party APIs</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#line_server">Server Configuration</a>
+                                <ul class="nav">
+                                    <li><a href="#line_server_1">Cron Job</a></li>
+                                    <li><a href="#line_server_2">Queue Worker</a></li>
                                 </ul>
                             </li>
                             <li><a href="#line6">Deployment</a>
@@ -152,6 +160,7 @@
                                     <li><a href="#line6_1">Local Setup</a></li>
                                     <li><a href="#line6_2">VPS / Server</a></li>
                                     <li><a href="#line6_3">SSL & Security</a></li>
+                                    <li><a href="#line6_4">cPanel / Shared Hosting</a></li>
                                 </ul>
                             </li>
                             <li><a href="#line_custom">Customization</a>
@@ -211,6 +220,87 @@
 .env            # Environment variables (DB, API Keys)
                                             </pre>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- System Features -->
+                    <section id="line_features" class="section">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">System Features <hr></h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>DayOneFood comes packed with features to manage your food delivery business efficiently.</p>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 id="line_feat_1">Order & Delivery</h4>
+                                        <ul class="intro-list">
+                                            <li>Real-time order tracking</li>
+                                            <li>Order scheduling & dispatching</li>
+                                            <li>Refund requests handling</li>
+                                            <li>Delivery Zone Management</li>
+                                            <li>Dynamic Delivery Charges</li>
+                                            <li>Invoice Generation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 id="line_feat_2">Food Management</h4>
+                                        <ul class="intro-list">
+                                            <li>Categories & Sub-categories</li>
+                                            <li>Addons & Variations</li>
+                                            <li><strong>AI Content Generation</strong> (Names, Descriptions)</li>
+                                            <li>Menu Scheduling</li>
+                                            <li>Cuisines & Labels (Tags)</li>
+                                            <li>Happy Hour Management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 id="line_feat_3">Marketing & Retention</h4>
+                                        <ul class="intro-list">
+                                            <li>Coupons & Discount Codes</li>
+                                            <li><strong>Push Notifications (FCM)</strong></li>
+                                            <li>BOGO (Buy One Get One) Offers</li>
+                                            <li><strong>Loyalty Points System</strong></li>
+                                            <li><strong>Wallet System</strong></li>
+                                            <li>Referral System (Refer & Earn)</li>
+                                            <li>Sales Popups & Announcements</li>
+                                            <li>Newsletter Subscriptions</li>
+                                            <li>Blog Management</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 id="line_feat_4">User & System</h4>
+                                        <ul class="intro-list">
+                                            <li><strong>Admin:</strong> Full system access & Analytics.</li>
+                                            <li><strong>Employee:</strong> Role-based permissions.</li>
+                                            <li><strong>Deliveryman:</strong> Dedicated App access.</li>
+                                            <li><strong>Customer:</strong> Web & App ordering.</li>
+                                            <li>Social Login (Google, Facebook, etc.)</li>
+                                            <li>Customer Support Ticket System</li>
+                                            <li>Testimonials & FAQs</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="line_feat_5">Reports & Analytics</h4>
+                                        <p>Gain insights with comprehensive reporting tools:</p>
+                                        <ul class="intro-list" style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                                            <li>Sales Reports</li>
+                                            <li>Transaction History</li>
+                                            <li>User Activity Logs</li>
+                                            <li>Analytics Dashboard</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -331,36 +421,94 @@ CREATE DATABASE dayonefood_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
                         </div>
                         <div class="row">
                             <div class="col-md-12">
+                                <p>All system configurations can be managed directly from the <strong>Admin Panel</strong>. You do not need to edit the <code>.env</code> file manually.</p>
+                                
                                 <h4 id="line5_1">Mail Setup</h4>
-                                <p>Configure your SMTP server for emails (Forgot Password, Order Notifications).</p>
-                                <pre class="brush: plain">
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=your_username
-MAIL_PASSWORD=your_password
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS="hello@dayonefood.com"
-MAIL_FROM_NAME="${APP_NAME}"
-                                </pre>
+                                <p>Go to <strong>Settings > 3rd Party Setup > Mail Config</strong>.</p>
+                                <ul class="intro-list">
+                                    <li><strong>Mailer Name:</strong> usually <code>smtp</code></li>
+                                    <li><strong>Host:</strong> e.g., <code>smtp.mailtrap.io</code></li>
+                                    <li><strong>Driver:</strong> e.g., <code>smtp</code></li>
+                                    <li><strong>Port:</strong> e.g., <code>587</code></li>
+                                    <li><strong>Username:</strong> Your SMTP Username</li>
+                                    <li><strong>Email ID:</strong> Your SMTP Password</li>
+                                    <li><strong>Encryption:</strong> <code>tls</code> or <code>ssl</code></li>
+                                    <li><strong>From Name:</strong> Name appearing in emails (e.g., DayOneFood)</li>
+                                    <li><strong>From Email:</strong> e.g., <code>no-reply@yourdomain.com</code></li>
+                                </ul>
 
                                 <h4 id="line5_2">Payment Gateways</h4>
-                                <p>Add your API keys for Stripe or other providers in `.env`:</p>
-                                <pre class="brush: plain">
-STRIPE_KEY=pk_test_...
-STRIPE_SECRET=sk_test_...
-STRIPE_WEBHOOK_SECRET=whsec_...
+                                <p>Go to <strong>Settings > 3rd Party Setup > Payment Methods</strong>.</p>
+                                <p>Here you can activate/deactivate gateways and switch between <strong>Test (Sandbox)</strong> and <strong>Live</strong> modes.</p>
+                                <ul class="intro-list">
+                                    <li>Select a Gateway (e.g., Stripe, PayPal).</li>
+                                    <li>Toggle the status to <strong>Active</strong>.</li>
+                                    <li>Enter your <strong>API Key / Client ID</strong> and <strong>Secret</strong>.</li>
+                                    <li>Click <strong>Save</strong>.</li>
+                                </ul>
+
+                                <h4 id="line5_3">Push Notifications (Firebase)</h4>
+                                <p>Go to <strong>Settings > Firebase Setup</strong>.</p>
+                                <p>You need to configure your Firebase project credentials here for Push Notifications and OTPs.</p>
+                                <ul class="intro-list">
+                                    <li><strong>API Key:</strong> From Firebase Console.</li>
+                                    <li><strong>Auth Domain:</strong> From Firebase Console.</li>
+                                    <li><strong>Project ID:</strong> From Firebase Console.</li>
+                                    <li><strong>Storage Bucket:</strong> From Firebase Console.</li>
+                                    <li><strong>Messaging Sender ID:</strong> From Firebase Console.</li>
+                                    <li><strong>App ID:</strong> From Firebase Console.</li>
+                                    <li><strong>Measurement ID:</strong> From Firebase Console.</li>
+                                    <li><strong>Service Account File:</strong> Upload the <code>service-account.json</code> file generated from Firebase (Project Settings > Service Accounts).</li>
+                                </ul>
+
+                                <h4 id="line5_4">Third Party APIs (SMS & Maps)</h4>
+                                <p>Go to <strong>Settings > 3rd Party Setup > Other Configurations</strong>.</p>
+                                <ul class="intro-list">
+                                    <li><strong>SMS Gateways:</strong> Configure providers like Twilio, Msg91, etc.</li>
+                                    <li><strong>Google Map:</strong> Enter your Google Maps API Key.</li>
+                                    <li><strong>Recaptcha:</strong> Configure Google Recaptcha keys for security.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Server Configuration -->
+                    <section id="line_server" class="section">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Server Configuration <hr></h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>For a production environment, you must configure the following system processes.</p>
+
+                                <h4 id="line_server_1">Cron Job (Scheduler)</h4>
+                                <p>The scheduler is responsible for running background tasks. Add the following entry to your server's Crontab:</p>
+                                <pre class="brush: bash">
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
                                 </pre>
 
-                                <h4 id="line5_3">Push Notifications</h4>
-                                <p>We use Push Notifications for real-time order updates. You need to configure your Firebase Cloud Messaging (FCM) keys in the `.env` file.</p>
-                                <pre class="brush: plain">
-FCM_SERVER_KEY=your_firebase_server_key_here
-FCM_SENDER_ID=your_sender_id
+                                <h4 id="line_server_2">Queue Worker</h4>
+                                <p>Queues allow you to process time-consuming tasks (like sending emails) in the background. We recommend using Supervisor to keep the queue worker running.</p>
+                                <p><strong>Command to run manually:</strong></p>
+                                <pre class="brush: bash">
+php artisan queue:work
                                 </pre>
-                                <div class="alert alert-info">
-                                    <strong>Note:</strong> You can obtain these keys from the <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a> under Project Settings > Cloud Messaging.
-                                </div>
+                                <p><strong>Supervisor Configuration (Recommended):</strong></p>
+                                <pre class="brush: plain">
+[program:dayonefood-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /path-to-your-project/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+user=www-data
+numprocs=2
+redirect_stderr=true
+stdout_logfile=/path-to-your-project/storage/logs/worker.log
+                                </pre>
                             </div>
                         </div>
                     </section>
@@ -419,6 +567,29 @@ server {
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d example.com
                                 </pre>
+
+                                <h4 id="line6_4">cPanel: Cannot Point Domain to /public?</h4>
+                                <p>If you cannot change the document root to the <code>public</code> folder, follow this alternative method:</p>
+
+                                <ol class="intro-list">
+                                    <li><strong>Upload Project:</strong> Upload the entire project to a folder on your server (e.g., <code>/public_html/dayonefood_core/</code>).</li>
+                                    <li><strong>Move Public Files:</strong> Go to <code>/public_html/dayonefood_core/public/</code> and select all files (including hidden files like <code>.htaccess</code>). Move or copy them to your main domain folder (e.g., <code>/public_html/</code>).</li>
+                                    <li><strong>Edit index.php:</strong> Open the <code>index.php</code> file you just moved to <code>public_html</code> and update the paths to point to your project folder:</li>
+                                </ol>
+
+                                <pre class="brush: php">
+// Find these lines:
+require __DIR__.'/../vendor/autoload.php';
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+// Replace them with (adjust 'dayonefood_core' to your folder name):
+require __DIR__.'/dayonefood_core/vendor/autoload.php';
+$app = require_once __DIR__.'/dayonefood_core/bootstrap/app.php';
+                                </pre>
+
+                                <div class="alert alert-warning">
+                                    <strong>Important:</strong> Ensure you also copy the <code>.htaccess</code> file from the <code>public</code> folder. In cPanel File Manager, click "Settings" (top right) and check "Show Hidden Files" to see it.
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -501,6 +672,13 @@ chmod -R 775 storage bootstrap/cache
 
                                     <h3>"Vite manifest not found"?</h3>
                                     <p>This means the frontend assets are missing. Please ensure you have extracted all files from the `install.zip` package correctly. The `public/build` directory should contain the assets. If the issue persists, try re-uploading the files.</p>
+
+                                    <h3>Images not loading (404)?</h3>
+                                    <p>The storage link might be missing. If you have SSH access, run:</p>
+                                    <pre class="brush: bash">
+php artisan storage:link
+                                    </pre>
+                                    <p>If you are on shared hosting without SSH, you can create a route to run this command programmatically.</p>
 
                                     <h3>Database Connection Refused?</h3>
                                     <p>Check your <code>.env</code> DB credentials and ensure your MySQL server is running.</p>
