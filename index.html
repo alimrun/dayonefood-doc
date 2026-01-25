@@ -154,6 +154,13 @@
                                     <li><a href="#line6_3">SSL & Security</a></li>
                                 </ul>
                             </li>
+                            <li><a href="#line_custom">Customization</a>
+                                <ul class="nav">
+                                    <li><a href="#line_custom_1">Controllers & Services</a></li>
+                                    <li><a href="#line_custom_2">Models</a></li>
+                                    <li><a href="#line_custom_3">Frontend (Vue)</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#line7">Troubleshooting</a></li>
                             <li><a href="#line8">Help & Support</a>
                                 <ul class="nav">
@@ -259,28 +266,13 @@ XML PHP Extension
                         <div class="row">
                             <div class="col-md-12">
                                 <h4 id="line3_1">Database Setup</h4>
-                                <p>Create a new database for the application. You can use phpMyAdmin or the command line.</p>
+                                <p>Create a new database for the application. You can use phpMyAdmin or the command line. You will need the database credentials (name, user, password) for the installation wizard.</p>
                                 <pre class="brush: sql">
 CREATE DATABASE dayonefood_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
                                 </pre>
 
                                 <h4 id="line3_2">Env Configuration</h4>
-                                <p>Copy the example environment file and configure your database credentials.</p>
-                                <pre class="brush: bash">
-cp .env.example .env
-                                </pre>
-                                <p>Edit `.env` and update these lines:</p>
-                                <pre class="brush: plain">
-APP_NAME="DayOneFood"
-APP_URL=http://your-domain.com
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=dayonefood_db
-DB_USERNAME=root
-DB_PASSWORD=
-                                </pre>
+                                <p>You do <strong>NOT</strong> need to configure the <code>.env</code> file manually. The automated installer will handle this for you in the next steps.</p>
                             </div>
                         </div>
                     </section>
@@ -295,39 +287,37 @@ DB_PASSWORD=
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="alert alert-warning">
-                                    <strong>Important:</strong> You will receive a <code>install.zip</code> file. Do not try to clone via Git.
+                                    <strong>Important:</strong> You will receive a <code>install.zip</code> file. This package includes all dependencies (vendor, node_modules) and built assets.
                                 </div>
 
                                 <h4 id="line4_1">Extraction & Setup</h4>
                                 <ol class="intro-list">
-                                    <li><strong>Unzip:</strong> Extract the contents of `install.zip` to your server's root directory.</li>
+                                    <li><strong>Upload & Unzip:</strong> Upload `install.zip` to your server's root directory (e.g., public_html) and extract it.</li>
                                     <li><strong>Domain Setup:</strong> Point your domain or subdomain to the <code>/public</code> folder. This is critical for security and functionality.</li>
-                                    <li><strong>Dependencies:</strong> Open your terminal in the extracted directory and run:</li>
+                                    <li><strong>Permissions:</strong> Ensure the following directories are writable (775 permissions):
+                                        <ul>
+                                            <li><code>/storage</code></li>
+                                            <li><code>/bootstrap/cache</code></li>
+                                            <li><code>.env</code> (The file itself should be writable by the web server user)</li>
+                                        </ul>
+                                    </li>
                                 </ol>
+
+                                <h4 id="line4_2">Automated Installation Wizard</h4>
+                                <p>Once extracted and permissions are set, open your browser and visit your domain (e.g., <code>http://yourdomain.com</code>). You will be redirected to the installation wizard.</p>
                                 
-                                <pre class="brush: bash">
-# 1. Install PHP dependencies
-composer install
+                                <p><strong>Step-by-Step Wizard:</strong></p>
+                                <ol class="intro-list">
+                                    <li><strong>Check Requirements:</strong> The system will automatically check if your server meets the PHP and extension requirements.</li>
+                                    <li><strong>Verify Purchase:</strong> Enter your CodeCanyon Purchase Code and Username to verify your license.</li>
+                                    <li><strong>Database Setup:</strong> Enter your Database Host, Port, Database Name, Username, and Password. The installer will verify the connection and update the configuration.</li>
+                                    <li><strong>Admin Setup:</strong> Create your Administrator account and set up the Business Profile. This step also runs necessary database migrations and seeders automatically.</li>
+                                    <li><strong>Finalize:</strong> The system will perform final cleanup tasks, generate keys, and link storage.</li>
+                                </ol>
 
-# 2. Generate App Key
-php artisan key:generate
-
-# 3. Run Database Migrations & Seeders
-php artisan migrate --seed
-
-# 4. Create Storage Link (for images)
-php artisan storage:link
-                                </pre>
-
-                                <h4 id="line4_2">Asset Building</h4>
-                                <p>Install and build the frontend assets (Vue/Tailwind):</p>
-                                <pre class="brush: bash">
-# Install Node dependencies
-npm install
-
-# Build for production
-npm run build
-                                </pre>
+                                <div class="alert alert-success">
+                                    <strong>Success:</strong> Once completed, you will be redirected to the Admin Dashboard.
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -384,12 +374,15 @@ FCM_SENDER_ID=your_sender_id
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 id="line6_1">Local Setup</h4>
-                                <p>For local testing, you can use the built-in PHP server:</p>
-                                <pre class="brush: bash">
-php artisan serve
-                                </pre>
-                                <p>Access the site at <code>http://localhost:8000</code>.</p>
+                                <h4 id="line6_1">Local Setup (XAMPP/MAMP)</h4>
+                                <p>To run the application locally without using the command line:</p>
+                                <ol class="intro-list">
+                                    <li><strong>Install XAMPP/MAMP:</strong> Download and install a local server environment (XAMPP, MAMP, WAMP).</li>
+                                    <li><strong>Place Files:</strong> Extract `install.zip` into the `htdocs` (XAMPP) or `www` (WAMP) folder.</li>
+                                    <li><strong>Start Server:</strong> Start Apache and MySQL from the control panel.</li>
+                                    <li><strong>Access:</strong> Open your browser and go to <code>http://localhost/folder_name/public</code>.</li>
+                                    <li><strong>Install:</strong> Follow the on-screen installation wizard.</li>
+                                </ol>
 
                                 <h4 id="line6_2">VPS / Server (Ubuntu/Nginx)</h4>
                                 <p>For production, we recommend Nginx. Ensure the <code>root</code> directive points to the <code>/public</code> folder:</p>
@@ -430,6 +423,65 @@ sudo certbot --nginx -d example.com
                         </div>
                     </section>
 
+                    <!-- Customization -->
+                    <section id="line_custom" class="section">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Customization <hr></h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>DayOneFood is designed to be easily customizable. Below are the guides for modifying the key components of the system.</p>
+                                
+                                <div class="alert alert-danger">
+                                    <strong>Developer Note:</strong> Customizing the source code requires technical knowledge of Laravel, Vue.js, and Inertia.js. Always backup your code before making changes.
+                                </div>
+
+                                <h4 id="line_custom_1">Controllers & Services</h4>
+                                <p>The backend logic is separated into <strong>Controllers</strong> (handling requests) and <strong>Services</strong> (business logic).</p>
+                                <ul class="intro-list">
+                                    <li><strong>Controllers:</strong> Located in <code>app/Http/Controllers</code>.
+                                        <br>Example: <code>ItemController.php</code> handles item management requests.
+                                    </li>
+                                    <li><strong>Services:</strong> Located in <code>app/Services</code>.
+                                        <br>Example: <code>ItemService.php</code> contains the logic for creating or updating items.
+                                    </li>
+                                </ul>
+                                <p><strong>How to customize:</strong> Ideally, you should modify the <strong>Service</strong> class to change business rules. If you need to add new endpoints, create a new method in the Controller and define a route in <code>routes/web.php</code> or <code>routes/api.php</code>.</p>
+
+                                <h4 id="line_custom_2">Models</h4>
+                                <p>Eloquent Models are located in the <code>app/Models</code> directory.</p>
+                                <p>If you add a new column to a database table, remember to:</p>
+                                <ol class="intro-list">
+                                    <li>Create a migration: <code>php artisan make:migration add_column_to_items_table</code></li>
+                                    <li>Update the Model's <code>$fillable</code> array in <code>app/Models/Item.php</code>.</li>
+                                    <li>Update the Service/Controller to handle the new field.</li>
+                                </ol>
+
+                                <h4 id="line_custom_3">Frontend (Vue Files)</h4>
+                                <p>The frontend is built with <strong>Vue 3</strong> and <strong>Inertia.js</strong>. The files are located in <code>resources/js</code>.</p>
+                                <ul class="intro-list">
+                                    <li><strong>Pages:</strong> <code>resources/js/Pages</code> - These are the main views.</li>
+                                    <li><strong>Components:</strong> <code>resources/js/Components</code> - Reusable UI elements.</li>
+                                </ul>
+                                
+                                <div class="alert alert-warning">
+                                    <strong>Important Requirement:</strong> Unlike the standard installation, customizing Vue files requires <strong>Node.js</strong> installed on your local machine.
+                                </div>
+
+                                <p><strong>Workflow for Frontend Changes:</strong></p>
+                                <ol class="intro-list">
+                                    <li><strong>Install Dependencies:</strong> Run <code>npm install</code> in the project root.</li>
+                                    <li><strong>Start Dev Server:</strong> Run <code>npm run dev</code> for hot-reloading while developing.</li>
+                                    <li><strong>Make Changes:</strong> Edit the `.vue` files as needed.</li>
+                                    <li><strong>Build for Production:</strong> Once finished, you <strong>MUST</strong> run <code>npm run build</code>. This compiles the assets into the `public/build` directory.</li>
+                                </ol>
+                                <p>After running `npm run build`, upload the <code>public/build</code> folder to your live server.</p>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- 7. Troubleshooting -->
                     <section id="line7" class="section">
                         <div class="row">
@@ -448,8 +500,7 @@ chmod -R 775 storage bootstrap/cache
                                     </pre>
 
                                     <h3>"Vite manifest not found"?</h3>
-                                    <p>You forgot to build the frontend assets. Run:</p>
-                                    <pre class="brush: bash">npm run build</pre>
+                                    <p>This means the frontend assets are missing. Please ensure you have extracted all files from the `install.zip` package correctly. The `public/build` directory should contain the assets. If the issue persists, try re-uploading the files.</p>
 
                                     <h3>Database Connection Refused?</h3>
                                     <p>Check your <code>.env</code> DB credentials and ensure your MySQL server is running.</p>
