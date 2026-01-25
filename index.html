@@ -184,6 +184,10 @@
                                     <li><a href="#line_custom_1">Controllers & Services</a></li>
                                     <li><a href="#line_custom_2">Models</a></li>
                                     <li><a href="#line_custom_3">Frontend (Vue)</a></li>
+                                    <li><a href="#line_custom_4">Styling & Themes</a></li>
+                                    <li><a href="#line_custom_5">Translations</a></li>
+                                    <li><a href="#line_custom_6">Email Templates</a></li>
+                                    <li><a href="#line_custom_7">Routes</a></li>
                                 </ul>
                             </li>
                             <li><a href="#line7">Troubleshooting</a></li>
@@ -806,6 +810,44 @@ $app = require_once __DIR__.'/dayonefood_core/bootstrap/app.php';
                                     <li><strong>Build for Production:</strong> Once finished, you <strong>MUST</strong> run <code>npm run build</code>. This compiles the assets into the `public/build` directory.</li>
                                 </ol>
                                 <p>After running `npm run build`, upload the <code>public/build</code> folder to your live server.</p>
+
+                                <h4 id="line_custom_4">Styling & Themes</h4>
+                                <p>We use <strong>Tailwind CSS 4</strong> for styling. You can customize the look and feel by editing the CSS files in <code>resources/css/</code>.</p>
+                                <ul class="intro-list">
+                                    <li><strong>Global Styles:</strong> <code>resources/css/app.css</code> - Contains Tailwind imports and global variables.</li>
+                                    <li><strong>Admin Panel:</strong> <code>resources/css/admin.css</code> - Specific styles for the backend.</li>
+                                    <li><strong>Storefront:</strong> <code>resources/css/storefront.css</code> - Specific styles for the customer-facing website.</li>
+                                </ul>
+                                <div class="alert alert-info">
+                                    <strong>Note:</strong> After changing any CSS file, you must run <code>npm run build</code> to compile the changes.
+                                </div>
+
+                                <h4 id="line_custom_5">Language & Translations</h4>
+                                <p>Translations are managed dynamically through the database to allow easy editing from the Admin Panel.</p>
+                                <ul class="intro-list">
+                                    <li><strong>Admin Panel:</strong> Go to <strong>Settings > System Setup > Translations</strong> to add new languages or edit existing keys.</li>
+                                    <li><strong>Developer Files:</strong>
+                                        <ul>
+                                            <li>Model: <code>app/Models/Translation.php</code></li>
+                                            <li>Seeder: <code>database/seeders/DatabaseSeeder.php</code> (checks for translation seeds)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <h4 id="line_custom_6">Email Templates</h4>
+                                <p>Email templates are built using Laravel Blade and can be customized in the <code>resources/views/emails</code> directory.</p>
+                                <ul class="intro-list">
+                                    <li><strong>Admin Templates:</strong> <code>resources/views/emails/admin/</code></li>
+                                    <li><strong>Customer Templates:</strong> <code>resources/views/emails/customer/</code> (e.g., invoice, welcome email, OTP).</li>
+                                </ul>
+                                <p>Some email configurations (like subjects) might be stored in the database. Check <code>database/json/email-templates.json</code> for the default seed data.</p>
+
+                                <h4 id="line_custom_7">Routes (Web & API)</h4>
+                                <p>If you need to add new pages or API endpoints, define them in the routes files:</p>
+                                <ul class="intro-list">
+                                    <li><strong>Web Routes:</strong> <code>routes/web.php</code> - Handles browser requests and Inertia page rendering.</li>
+                                    <li><strong>API Routes:</strong> <code>routes/api.php</code> - Handles mobile app and external API requests.</li>
+                                </ul>
                             </div>
                         </div>
                     </section>
@@ -821,24 +863,91 @@ $app = require_once __DIR__.'/dayonefood_core/bootstrap/app.php';
                             <div class="col-md-12">
                                 <p>Common issues and how to fix them.</p>
                                 <div class="accordion">
-                                    <h3>500 Server Error?</h3>
-                                    <p>Check <code>storage/logs/laravel.log</code>. Also ensure <code>storage/</code> and <code>bootstrap/cache/</code> are writable.</p>
+                                    <h3>1. 500 Server Error (Blank Screen)</h3>
+                                    <p>This is the most common error. It usually means a permission issue or a fatal PHP error.</p>
+                                    <ul>
+                                        <li><strong>Check Logs:</strong> Open <code>storage/logs/laravel.log</code> to see the exact error message.</li>
+                                        <li><strong>Fix Permissions:</strong> Run the following commands in your terminal:</li>
+                                    </ul>
                                     <pre class="brush: bash">
-chmod -R 775 storage bootstrap/cache
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+                                    </pre>
+                                    
+                                    <h3>2. "Vite manifest not found"</h3>
+                                    <p>This error occurs when the frontend assets are missing or the build path is incorrect.</p>
+                                    <ul>
+                                        <li><strong>Cause:</strong> You might have uploaded the files incorrectly or the `public/build` folder is missing.</li>
+                                        <li><strong>Solution:</strong> Ensure you have extracted the <strong>install.zip</strong> file correctly. The `public/build` directory MUST exist. If it's missing, re-upload the `public` folder from the zip.</li>
+                                    </ul>
+
+                                    <h3>3. Images Not Loading (404 Error)</h3>
+                                    <p>If uploaded images are broken, the symbolic link between `public/storage` and `storage/app/public` is missing.</p>
+                                    <ul>
+                                        <li><strong>SSH Solution:</strong> Run <code>php artisan storage:link</code>.</li>
+                                        <li><strong>Shared Hosting Solution:</strong> If you don't have SSH, you can create a temporary route in `routes/web.php` to run the command:</li>
+                                    </ul>
+                                    <pre class="brush: php">
+Route::get('/link-storage', function () {
+    Artisan::call('storage:link');
+    return 'Storage Linked!';
+});
+                                    </pre>
+                                    <p>Visit <code>yourdomain.com/link-storage</code> once, then remove the code.</p>
+
+                                    <h3>4. 404 Not Found (On all pages except Homepage)</h3>
+                                    <p>This happens when your web server (Nginx/Apache) is not configured to handle "pretty URLs".</p>
+                                    <ul>
+                                        <li><strong>Nginx:</strong> Ensure your config includes the <code>try_files</code> directive:
+                                            <pre class="brush: plain">try_files $uri $uri/ /index.php?$query_string;</pre>
+                                        </li>
+                                        <li><strong>Apache:</strong> Ensure the <code>.htaccess</code> file exists in the <code>public</code> directory and `mod_rewrite` is enabled.</li>
+                                    </ul>
+
+                                    <h3>5. Emails Not Sending</h3>
+                                    <p>If emails (OTPs, Invoices) are failing:</p>
+                                    <ul>
+                                        <li><strong>Check Config:</strong> Go to Admin Panel > Settings > 3rd Party Setup > Mail Config. Test the connection.</li>
+                                        <li><strong>Queue Worker:</strong> If you are using <code>QUEUE_CONNECTION=database</code> in `.env`, you <strong>MUST</strong> run the queue worker (Supervisor). Try changing it to <code>QUEUE_CONNECTION=sync</code> for testing (sends email immediately but slows down the app).</li>
+                                    </ul>
+
+                                    <h3>6. "Class not found" or "Target class does not exist"</h3>
+                                    <p>This usually happens after an update or moving files.</p>
+                                    <pre class="brush: bash">
+composer dump-autoload
+php artisan optimize:clear
                                     </pre>
 
-                                    <h3>"Vite manifest not found"?</h3>
-                                    <p>This means the frontend assets are missing. Please ensure you have extracted all files from the `install.zip` package correctly. The `public/build` directory should contain the assets. If the issue persists, try re-uploading the files.</p>
-
-                                    <h3>Images not loading (404)?</h3>
-                                    <p>The storage link might be missing. If you have SSH access, run:</p>
+                                    <h3>7. Changes Not Reflecting?</h3>
+                                    <p>If you changed `.env` or code but don't see the result:</p>
                                     <pre class="brush: bash">
-php artisan storage:link
+php artisan optimize:clear
+php artisan config:clear
+php artisan cache:clear
                                     </pre>
-                                    <p>If you are on shared hosting without SSH, you can create a route to run this command programmatically.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Browser Cache:</strong> Also try hard-refreshing your browser (Ctrl + F5).
+                                    </div>
 
-                                    <h3>Database Connection Refused?</h3>
-                                    <p>Check your <code>.env</code> DB credentials and ensure your MySQL server is running.</p>
+                                    <h3>8. 419 Page Expired (CSRF Token Mismatch)</h3>
+                                    <p>This error occurs when the session expires or cookies are blocked.</p>
+                                    <ul>
+                                        <li><strong>Check Session Settings:</strong> Ensure <code>SESSION_DOMAIN</code> in `.env` is set correctly (or set to `null`).</li>
+                                        <li><strong>Permissions:</strong> Ensure <code>storage/framework/sessions</code> is writable.</li>
+                                        <li><strong>HTTPS:</strong> If using HTTPS, ensure <code>SESSION_SECURE_COOKIE=true</code>.</li>
+                                    </ul>
+
+                                    <h3>9. Mixed Content Error (HTTP vs HTTPS)</h3>
+                                    <p>If your site looks broken or shows "Not Secure", check your `.env` file:</p>
+                                    <pre class="brush: plain">
+APP_URL=https://yourdomain.com
+                                    </pre>
+                                    <p>You may also need to force HTTPS in `app/Providers/AppServiceProvider.php` if you are behind a load balancer:</p>
+                                    <pre class="brush: php">
+if($this->app->environment('production')) {
+    \URL::forceScheme('https');
+}
+                                    </pre>
                                 </div>
                             </div>
                         </div>
