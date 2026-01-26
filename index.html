@@ -224,19 +224,38 @@
                                             <h4 id="line1_2">Folder Structure</h4>
                                             <p>Understanding the structure is key to customization:</p>
                                             <pre class="brush: plain">
-/app            # Core application logic (Models, Controllers)
-/bootstrap      # Framework bootstrap files
-/config         # App configuration files (database, mail, services)
-/database       # Migrations and Seeders
-/public         # Web root (images, build assets) - POINT DOMAIN HERE
+/app
+  /Console          # Custom Artisan commands
+  /Enums            # Enumerations (OrderStatus, PaymentMethod, etc.)
+  /Events           # Event classes
+  /Http
+    /Controllers    # Application Logic
+      /Api          # API Controllers (V1, Customer, DeliveryMan)
+      /Payment      # Payment Gateway Controllers
+      /Web          # Web Controllers (Admin, StoreFront)
+    /Middleware     # HTTP Middleware
+    /Requests       # Validation Logic (Form Requests)
+    /Resources      # API Resources (Data transformation)
+  /Models           # Eloquent Models
+  /Services         # Business Logic Services
+  /Traits           # Reusable Traits
+/bootstrap          # Framework bootstrap files
+/config             # App configuration files (database, mail, services)
+/database           # Migrations and Seeders
+/public             # Web root (images, build assets) - POINT DOMAIN HERE
 /resources
-  /css          # Tailwind CSS entry points
-  /js           # Vue components and Inertia pages
-    /Pages      # Main views corresponding to Routes
-    /Components # Reusable Vue components
-/routes         # Web and API routes
-/storage        # Logs, compiled templates, file uploads
-.env            # Environment variables (DB, API Keys)
+  /css              # Tailwind CSS entry points
+  /js               # Vue components and Inertia pages
+    /AdminPanel     # Admin Panel Vue Components
+    /StoreFront     # StoreFront Vue Components
+    /components     # Shared Vue components
+    /lib            # Library utilities
+  /views            # Blade templates (entry points)
+/routes             # Web and API routes
+  /api              # API routes
+  /web              # Web routes
+/storage            # Logs, compiled templates, file uploads
+.env                # Environment variables (DB, API Keys)
                                             </pre>
                                         </div>
                                     </div>
