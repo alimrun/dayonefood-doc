@@ -406,7 +406,7 @@
                                 </ul>
 
                                 <h4 id="line2_2">PHP Extensions</h4>
-                                <p>These extensions must be enabled in your `php.ini`:</p>
+                                <p>These core extensions must be enabled in your <code>php.ini</code> for Laravel to run correctly:</p>
                                 <pre class="brush: plain">
 BCMath PHP Extension
 Ctype PHP Extension
@@ -414,9 +414,17 @@ Fileinfo PHP Extension
 JSON PHP Extension
 Mbstring PHP Extension
 OpenSSL PHP Extension
-PDO PHP Extension
+PDO PHP Extension (pdo_mysql for MySQL/MariaDB)
 Tokenizer PHP Extension
 XML PHP Extension
+                                </pre>
+                                <p>For DayOneFood features (image upload, processing, APIs, updates), you should also enable:</p>
+                                <pre class="brush: plain">
+cURL PHP Extension
+GD PHP Extension
+Exif PHP Extension
+Intl PHP Extension
+Zip PHP Extension
                                 </pre>
                                 <div class="alert alert-info">
                                     <strong>Tip:</strong> You can check your PHP version and extensions by running <code>php -v</code> and <code>php -m</code> in your terminal.
