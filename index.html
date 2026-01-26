@@ -1061,6 +1061,34 @@ if($this->app->environment('production')) {
     \URL::forceScheme('https');
 }
                                     </pre>
+
+                                    <h3>10. "Composer detected issues in your platform"</h3>
+                                    <p>This error means your PHP version or extensions don't match the project requirements.</p>
+                                    <pre class="brush: bash">
+composer install --ignore-platform-reqs
+                                    </pre>
+                                    <div class="alert alert-warning">
+                                        <strong>Warning:</strong> Use this only if you are sure your server meets the requirements but the check is failing (e.g., different CLI PHP version).
+                                    </div>
+
+                                    <h3>11. SQL Error: "Syntax error or access violation"</h3>
+                                    <p>If you see SQL strict mode errors (e.g., 'GROUP BY' issues), disable strict mode in <code>config/database.php</code>:</p>
+                                    <pre class="brush: php">
+'mysql' => [
+    'strict' => false, // Change from true to false
+    // ...
+],
+                                    </pre>
+                                    <p>Then run <code>php artisan config:clear</code>.</p>
+
+                                    <h3>12. Large File Upload Failed</h3>
+                                    <p>If you cannot upload large images or files, increase the limits in your <code>php.ini</code> file:</p>
+                                    <pre class="brush: plain">
+upload_max_filesize = 64M
+post_max_size = 64M
+memory_limit = 512M
+                                    </pre>
+                                    <p>Restart PHP-FPM or Apache after changes.</p>
                                 </div>
                             </div>
                         </div>
