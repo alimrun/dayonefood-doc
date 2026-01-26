@@ -176,7 +176,9 @@
                             <li><a href="#line6">Deployment</a>
                                 <ul class="nav">
                                     <li><a href="#line6_1">Local Setup</a></li>
-                                    <li><a href="#line6_2">VPS / Server</a></li>
+                                    <li><a href="#line6_2">Nginx Server</a></li>
+                                    <li><a href="#line6_2_apache">Apache Server</a></li>
+                                    <li><a href="#line6_2_litespeed">LiteSpeed Server</a></li>
                                     <li><a href="#line6_3">SSL & Security</a></li>
                                     <li><a href="#line6_4">cPanel / Shared Hosting</a></li>
                                 </ul>
@@ -771,7 +773,7 @@ php artisan view:cache
                                     <strong>Note:</strong> <code>php artisan serve</code> is recommended for local development only. For production, always use a proper web server (Nginx/Apache) pointing to the <code>/public</code> folder.
                                 </div>
 
-                                <h4 id="line6_2">VPS / Server (Ubuntu/Nginx)</h4>
+                                <h4 id="line6_2">VPS / Server (Nginx)</h4>
                                 <p>For production, we recommend Nginx. Ensure the <code>root</code> directive points to the <code>/public</code> folder:</p>
                                 <pre class="brush: plain">
 server {
@@ -799,6 +801,39 @@ server {
     }
 }
                                 </pre>
+
+                                <h4 id="line6_2_apache">VPS / Server (Apache)</h4>
+                                <p>If you prefer Apache, use the following Virtual Host configuration. Ensure <code>mod_rewrite</code> is enabled.</p>
+                                <pre class="brush: plain">
+&lt;VirtualHost *:80&gt;
+    ServerName example.com
+    DocumentRoot /var/www/dayonefood/public
+
+    &lt;Directory /var/www/dayonefood/public&gt;
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+                                </pre>
+                                <div class="alert alert-info">
+                                    <strong>Command:</strong> Enable rewrite module by running <code>sudo a2enmod rewrite</code> and restart Apache.
+                                </div>
+
+                                <h4 id="line6_2_litespeed">LiteSpeed / OpenLiteSpeed</h4>
+                                <p>LiteSpeed Enterprise is fully compatible with Apache <code>.htaccess</code> files. OpenLiteSpeed requires some additional setup.</p>
+                                <ul class="intro-list">
+                                    <li><strong>LiteSpeed Enterprise:</strong> No special configuration needed. Just point the document root to <code>/public</code>. It reads the <code>.htaccess</code> file automatically.</li>
+                                    <li><strong>OpenLiteSpeed:</strong>
+                                        <ul>
+                                            <li>Go to <strong>Virtual Host > General</strong> and set <strong>Document Root</strong> to <code>/path/to/project/public</code>.</li>
+                                            <li>Go to <strong>Virtual Host > Rewrite</strong>, set <strong>Enable Rewrite</strong> to <code>Yes</code>, and <strong>Auto Load from .htaccess</strong> to <code>Yes</code>.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
 
                                 <h4 id="line6_3">SSL & Security</h4>
                                 <p>Always run your production site over HTTPS. You can use Certbot (Let's Encrypt):</p>
