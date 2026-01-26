@@ -1089,6 +1089,20 @@ post_max_size = 64M
 memory_limit = 512M
                                     </pre>
                                     <p>Restart PHP-FPM or Apache after changes.</p>
+
+                                    <h3>13. Node.js & Vue.js Build Issues</h3>
+                                    <p>If you encounter errors while compiling the frontend:</p>
+                                    <ul>
+                                        <li><strong>Dependency Conflicts:</strong> If <code>npm install</code> fails, try running:
+                                            <pre class="brush: bash">rm -rf node_modules package-lock.json
+npm install --legacy-peer-deps</pre>
+                                        </li>
+                                        <li><strong>Heap Out of Memory:</strong> If the build process crashes with memory errors:
+                                            <pre class="brush: bash">export NODE_OPTIONS=--max_old_space_size=4096
+npm run build</pre>
+                                        </li>
+                                        <li><strong>Vite Connection Refused:</strong> If Hot Module Replacement (HMR) isn't working locally, ensure port <code>5173</code> is allowed in your firewall or Docker container.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
