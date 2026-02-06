@@ -229,7 +229,8 @@
                                                 <strong>Vue 3</strong>, DayOneFood offers a solid, high-performance
                                                 foundation. It is engineered for startups that need to hit the market
                                                 immediately, test their hypothesis, and scale based on real user
-                                                feedback.</p>
+                                                feedback.
+                                            </p>
 
                                             <h4 class="push-top">Why Choose DayOneFood for your MVP?</h4>
                                             <ul class="intro-list">
@@ -576,7 +577,8 @@ Zip PHP Extension
                                     <li><strong>Upload:</strong> Upload and unzip <code>install.zip</code> to your
                                         server.</li>
                                     <li><strong>Point Domain:</strong> Set your domain's document root to the
-                                        <code>/public</code> folder.</li>
+                                        <code>/public</code> folder.
+                                    </li>
                                     <li><strong>Run Wizard:</strong> Visit your website. The installer will launch
                                         automatically.</li>
                                     <li><strong>Configure:</strong> Enter Database credentials and Purchase Code when
@@ -631,7 +633,8 @@ Zip PHP Extension
                                     <li>Login to your <strong>cPanel</strong>.</li>
                                     <li>Go to <strong>MySQL Database Wizard</strong> (or MySQL Databases).</li>
                                     <li>Enter a name for your database (e.g., <code>dayonefood_db</code>) and click
-                                        <strong>Next Step</strong>.</li>
+                                        <strong>Next Step</strong>.
+                                    </li>
                                 </ol>
 
                                 <p><strong>Step B: Create User</strong></p>
@@ -796,7 +799,8 @@ Zip PHP Extension
                                     <li><strong>Measurement ID:</strong> From Firebase Console.</li>
                                     <li><strong>Service Account File:</strong> Upload the
                                         <code>service-account.json</code> file generated from Firebase (Project Settings
-                                        > Service Accounts).</li>
+                                        > Service Accounts).
+                                    </li>
                                 </ul>
 
                                 <h4 id="line5_5">Social Logins</h4>
@@ -844,7 +848,8 @@ Zip PHP Extension
 
                                 <h4 id="line_server_1">PHP Configuration (php.ini)</h4>
                                 <p>To ensure smooth operation, especially for image uploads and processing, update your
-                                    <code>php.ini</code> with these values:</p>
+                                    <code>php.ini</code> with these values:
+                                </p>
                                 <pre class="brush: plain">
 max_execution_time = 300
 max_input_time = 300
@@ -877,7 +882,8 @@ sudo apt-get install supervisor
 
                                 <p><strong>2. Create Configuration File:</strong></p>
                                 <p>Create a new configuration file at
-                                    <code>/etc/supervisor/conf.d/dayonefood-worker.conf</code>:</p>
+                                    <code>/etc/supervisor/conf.d/dayonefood-worker.conf</code>:
+                                </p>
                                 <pre class="brush: plain">
 [program:dayonefood-worker]
 process_name=%(program_name)s_%(process_num)02d
@@ -961,7 +967,8 @@ php artisan view:cache
                                     <li><strong>Start Server:</strong> Start Apache and MySQL from the control panel.
                                     </li>
                                     <li><strong>Access:</strong> Open your browser and go to
-                                        <code>http://localhost/folder_name/public</code>.</li>
+                                        <code>http://localhost/folder_name/public</code>.
+                                    </li>
                                     <li><strong>Install:</strong> Follow the on-screen installation wizard.</li>
                                 </ol>
 
@@ -969,9 +976,11 @@ php artisan view:cache
                                 </p>
                                 <ol class="intro-list">
                                     <li><strong>Open Terminal:</strong> Go to your project root (where the
-                                        <code>artisan</code> file exists).</li>
+                                        <code>artisan</code> file exists).
+                                    </li>
                                     <li><strong>Run Server:</strong> Execute <code>php artisan serve</code> (optionally
-                                        <code>php artisan serve --host=127.0.0.1 --port=8000</code>).</li>
+                                        <code>php artisan serve --host=127.0.0.1 --port=8000</code>).
+                                    </li>
                                     <li><strong>Access App:</strong> Visit <code>http://127.0.0.1:8000</code> in your
                                         browser.</li>
                                 </ol>
@@ -1013,7 +1022,8 @@ server {
 
                                 <h4 id="line6_2_apache">VPS / Server (Apache)</h4>
                                 <p>If you prefer Apache, use the following Virtual Host configuration. Ensure
-                                    <code>mod_rewrite</code> is enabled.</p>
+                                    <code>mod_rewrite</code> is enabled.
+                                </p>
                                 <pre class="brush: plain">
 &lt;VirtualHost *:80&gt;
     ServerName example.com
@@ -1040,7 +1050,8 @@ server {
                                 <ul class="intro-list">
                                     <li><strong>LiteSpeed Enterprise:</strong> No special configuration needed. Just
                                         point the document root to <code>/public</code>. It reads the
-                                        <code>.htaccess</code> file automatically.</li>
+                                        <code>.htaccess</code> file automatically.
+                                    </li>
                                     <li><strong>OpenLiteSpeed:</strong>
                                         <ul>
                                             <li>Go to <strong>Virtual Host > General</strong> and set <strong>Document
@@ -1069,7 +1080,8 @@ sudo certbot --nginx -d example.com
                                     <li><strong>Move Public Files:</strong> Go to
                                         <code>/public_html/dayonefood_core/public/</code> and select all files
                                         (including hidden files like <code>.htaccess</code>). Move or copy them to your
-                                        main domain folder (e.g., <code>/public_html/</code>).</li>
+                                        main domain folder (e.g., <code>/public_html/</code>).
+                                    </li>
                                     <li><strong>Edit index.php:</strong> Open the <code>index.php</code> file you just
                                         moved to <code>public_html</code> and update the paths to point to your project
                                         folder:</li>
@@ -1129,16 +1141,19 @@ $app = require_once __DIR__.'/dayonefood_core/bootstrap/app.php';
                                 <p><strong>How to customize:</strong> Ideally, you should modify the
                                     <strong>Service</strong> class to change business rules. If you need to add new
                                     endpoints, create a new method in the Controller and define a route in
-                                    <code>routes/web.php</code> or <code>routes/api.php</code>.</p>
+                                    <code>routes/web.php</code> or <code>routes/api.php</code>.
+                                </p>
 
                                 <h4 id="line_custom_2">Models</h4>
                                 <p>Eloquent Models are located in the <code>app/Models</code> directory.</p>
                                 <p>If you add a new column to a database table, remember to:</p>
                                 <ol class="intro-list">
                                     <li>Create a migration:
-                                        <code>php artisan make:migration add_column_to_items_table</code></li>
+                                        <code>php artisan make:migration add_column_to_items_table</code>
+                                    </li>
                                     <li>Update the Model's <code>$fillable</code> array in
-                                        <code>app/Models/Item.php</code>.</li>
+                                        <code>app/Models/Item.php</code>.
+                                    </li>
                                     <li>Update the Service/Controller to handle the new field.</li>
                                 </ol>
 
@@ -1205,16 +1220,19 @@ $app = require_once __DIR__.'/dayonefood_core/bootstrap/app.php';
 
                                 <h4 id="line_custom_6">Email Templates</h4>
                                 <p>Email templates are built using Laravel Blade and can be customized in the
-                                    <code>resources/views/emails</code> directory.</p>
+                                    <code>resources/views/emails</code> directory.
+                                </p>
                                 <ul class="intro-list">
                                     <li><strong>Admin Templates:</strong> <code>resources/views/emails/admin/</code>
                                     </li>
                                     <li><strong>Customer Templates:</strong>
                                         <code>resources/views/emails/customer/</code> (e.g., invoice, welcome email,
-                                        OTP).</li>
+                                        OTP).
+                                    </li>
                                 </ul>
                                 <p>Some email configurations (like subjects) might be stored in the database. Check
-                                    <code>database/json/email-templates.json</code> for the default seed data.</p>
+                                    <code>database/json/email-templates.json</code> for the default seed data.
+                                </p>
 
                                 <h4 id="line_custom_7">Routes (Web & API)</h4>
                                 <p>If you need to add new pages or API endpoints, define them in the routes files:</p>
@@ -1224,6 +1242,34 @@ $app = require_once __DIR__.'/dayonefood_core/bootstrap/app.php';
                                     <li><strong>API Routes:</strong> <code>routes/api.php</code> - Handles mobile app
                                         and external API requests.</li>
                                 </ul>
+                                <p><strong>Examples (web.php):</strong></p>
+                                <pre class="brush: php">
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+
+Route::get('/', function () {
+    return Inertia::render('StoreFront/Home');
+})->name('home');
+
+Route::get('/admin/login', function () {
+    return Inertia::render('AdminPanel/Auth/Login');
+})->name('admin.login');
+
+Route::get('/admin', function () {
+    return Inertia::render('AdminPanel/Dashboard');
+})->name('admin.dashboard');
+                                </pre>
+                                <p><strong>Example (api.php):</strong></p>
+                                <pre class="brush: php">
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+Route::middleware('api')->group(function () {
+    Route::get('/status', function () {
+        return ['ok' => true];
+    });
+});
+                                </pre>
                             </div>
                         </div>
                     </section>
@@ -1306,7 +1352,8 @@ Route::get('/link-storage', function () {
                                             <code>QUEUE_CONNECTION=database</code> in `.env`, you <strong>MUST</strong>
                                             run the queue worker (Supervisor). Try changing it to
                                             <code>QUEUE_CONNECTION=sync</code> for testing (sends email immediately but
-                                            slows down the app).</li>
+                                            slows down the app).
+                                        </li>
                                     </ul>
 
                                     <h3>6. "Class not found" or "Target class does not exist"</h3>
@@ -1336,7 +1383,8 @@ php artisan cache:clear
                                         <li><strong>Permissions:</strong> Ensure <code>storage/framework/sessions</code>
                                             is writable.</li>
                                         <li><strong>HTTPS:</strong> If using HTTPS, ensure
-                                            <code>SESSION_SECURE_COOKIE=true</code>.</li>
+                                            <code>SESSION_SECURE_COOKIE=true</code>.
+                                        </li>
                                     </ul>
 
                                     <h3>9. Mixed Content Error (HTTP vs HTTPS)</h3>
@@ -1376,7 +1424,8 @@ composer install --ignore-platform-reqs
 
                                     <h3>12. Large File Upload Failed</h3>
                                     <p>If you cannot upload large images or files, increase the limits in your
-                                        <code>php.ini</code> file:</p>
+                                        <code>php.ini</code> file:
+                                    </p>
                                     <pre class="brush: plain">
 upload_max_filesize = 64M
 post_max_size = 64M
