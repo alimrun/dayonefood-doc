@@ -137,18 +137,24 @@ html.dark .docs-sidebar .nav .nav > li.active > a {
 }
 
 /* Sidebar Affix Width Fix */
-.docs-sidebar.affix {
-    position: fixed; 
-    top: 30px;
-}
-
-.docs-sidebar.affix-bottom {
-    position: absolute;
+@media (max-width: 991px) {
+    .docs-sidebar.affix, .docs-sidebar.affix-top, .docs-sidebar.affix-bottom {
+        position: static !important;
+        width: auto !important;
+    }
 }
 
 @media (min-width: 992px) {
     .docs-sidebar.affix {
+        position: fixed; 
+        top: 30px;
         width: 213px;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+
+    .docs-sidebar.affix-bottom {
+        position: absolute;
     }
 }
 
@@ -156,10 +162,4 @@ html.dark .docs-sidebar .nav .nav > li.active > a {
     .docs-sidebar.affix {
         width: 263px;
     }
-}
-
-/* Ensure sidebar is scrollable if content is too tall */
-.docs-sidebar.affix {
-    max-height: calc(100vh - 40px);
-    overflow-y: auto;
 }
