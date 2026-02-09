@@ -108,22 +108,66 @@ html #mode .dark {
     display: none;
 }
 
-/* Sidebar Sub-menu Styles */
+/* Sidebar Styles */
+
+/* Parent Menu Items */
+.docs-sidebar .nav > li > a {
+    color: #555;
+    font-weight: 600;
+    border-left: 2px solid transparent;
+}
+
+.docs-sidebar .nav > li > a:hover,
+.docs-sidebar .nav > li.active > a {
+    color: #0E97EE;
+    background: transparent;
+}
+
+/* Sub-menu Container */
 .docs-sidebar .nav .nav {
     display: none; /* Hide by default */
     padding-bottom: 10px;
+    padding-left: 0;
+    margin-left: 17px; /* Indentation */
+    border-left: 1px solid #ddd; /* Vertical guide line */
 }
 
 .docs-sidebar .nav > .active > .nav {
     display: block; /* Show when parent is active */
 }
 
+/* Sub-menu Items */
 .docs-sidebar .nav .nav > li > a {
-    padding-left: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     font-size: 13px;
     font-weight: 400;
+    color: #777;
+    border-left: 2px solid transparent; /* Prepare for active border */
+    margin-left: -1px; /* Overlap with container border */
+}
+
+/* Sub-menu Hover/Active */
+.docs-sidebar .nav .nav > li > a:hover,
+.docs-sidebar .nav .nav > li.active > a {
+    color: #0E97EE;
+    border-left: 2px solid #0E97EE;
+    background: transparent;
+}
+
+/* Dark Mode Adjustments */
+html.dark .docs-sidebar .nav > li > a {
+    color: #eee;
+}
+
+html.dark .docs-sidebar .nav > li > a:hover,
+html.dark .docs-sidebar .nav > li.active > a {
+    color: #F16811;
+}
+
+html.dark .docs-sidebar .nav .nav {
+    border-left: 1px solid #444;
 }
 
 html.dark .docs-sidebar .nav .nav > li > a {
