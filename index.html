@@ -219,84 +219,65 @@
                                 <div class="row">
                                     <div class="col-md-12 full">
                                         <div class="intro1">
-                                            <p class="lead_"><strong>DayOneFood</strong> is a robust <strong>MVP
-                                                    (Minimum Viable Product)</strong> solution designed to help
-                                                entrepreneurs validate their food delivery business idea quickly and
-                                                efficiently. It provides the essential core features needed to launch
-                                                fast without the complexity of bloated enterprise systems.</p>
+                                            <p class="lead_"><strong>DayOneFood</strong> is a modern, full-stack food delivery platform built to scale. It combines a robust <strong>Laravel 12</strong> backend with a dynamic <strong>Vue 3</strong> frontend, powered by <strong>Inertia.js</strong> for a seamless single-page application (SPA) experience.</p>
 
-                                            <p>Built on the robust <strong>Laravel 12</strong> framework and powered by
-                                                <strong>Vue 3</strong>, DayOneFood offers a solid, high-performance
-                                                foundation. It is engineered for startups that need to hit the market
-                                                immediately, test their hypothesis, and scale based on real user
-                                                feedback.
-                                            </p>
+                                            <p>Designed for speed and flexibility, DayOneFood leverages the latest web technologies, including <strong>Tailwind CSS 4</strong> for styling and <strong>Vite</strong> for lightning-fast builds. Whether you are launching a single-restaurant delivery service or a multi-branch food empire, this system provides the solid foundation you need.</p>
 
-                                            <h4 class="push-top">Why Choose DayOneFood for your MVP?</h4>
+                                            <h4 class="push-top">Key Technology Stack</h4>
                                             <ul class="intro-list">
-                                                <li><strong>Rapid Deployment:</strong> Launch your platform in days, not
-                                                    months, with a pre-built, production-ready codebase.</li>
-                                                <li><strong>Mobile Responsive:</strong> Fully optimized for mobile
-                                                    browsers to ensure a smooth experience for all users.</li>
-                                                <li><strong>Secure Foundation:</strong> Built on industry-standard
-                                                    security practices (Laravel) to keep your early data safe.</li>
-                                                <li><strong>Scalable MVP:</strong> Start with what matters and easily
-                                                    extend features as your business grows.</li>
-                                                <li><strong>User-Centric Design:</strong> Focused on core user journeys
-                                                    to ensure high engagement from day one.</li>
+                                                <li><strong>Backend Framework:</strong> Laravel 12 (Bleeding Edge) - The most popular PHP framework, known for its elegance and security.</li>
+                                                <li><strong>Frontend Framework:</strong> Vue 3 (Composition API) - A progressive JavaScript framework for building user interfaces.</li>
+                                                <li><strong>SPA Protocol:</strong> Inertia.js - Allows building modern SPAs using classic server-side routing and controllers.</li>
+                                                <li><strong>Styling:</strong> Tailwind CSS 4 - A utility-first CSS framework for rapid UI development.</li>
+                                                <li><strong>Build Tool:</strong> Vite 7 - Next-generation frontend tooling.</li>
+                                                <li><strong>Database:</strong> MySQL / MariaDB - Reliable relational database management.</li>
                                             </ul>
 
                                             <h4 id="line1_1">System Architecture</h4>
-                                            <p>DayOneFood follows the <strong>Monolith with Modern Frontend</strong>
-                                                architecture using Inertia.js. This allows us to build a classic
-                                                server-driven web app but with the modern, single-page application (SPA)
-                                                feel of Vue.js.</p>
+                                            <p>DayOneFood utilizes a <strong>Monolithic Architecture with Decoupled Frontend Modules</strong>. While the backend is a unified Laravel application, the frontend is logically divided into two distinct applications sharing a common codebase:</p>
                                             <ul class="intro-list">
-                                                <li><strong>Backend:</strong> Laravel 12 (MVC Pattern) - The solid
-                                                    foundation.</li>
-                                                <li><strong>Frontend:</strong> Vue 3 (Composition API) - Interactive and
-                                                    responsive.</li>
-                                                <li><strong>Communication:</strong> Inertia.js (No API required for
-                                                    internal frontend) - Seamless data flow.</li>
-                                                <li><strong>Styling:</strong> Tailwind CSS 4 (Utility-first) - Modern
-                                                    and customizable design.</li>
+                                                <li><strong>Admin Panel:</strong> A powerful dashboard for business owners, managers, and employees to manage orders, food items, and users.</li>
+                                                <li><strong>Storefront:</strong> A customer-facing web application where users can browse menus, place orders, and track deliveries.</li>
                                             </ul>
+                                            <p>Both applications live within the same project structure but serve different purposes, ensuring better organization and maintainability.</p>
 
                                             <h4 id="line1_2">Folder Structure</h4>
-                                            <p>Understanding the structure is key to customization:</p>
+                                            <p>The project follows a standard Laravel structure with specific enhancements for the dual-frontend architecture:</p>
                                             <pre class="brush: plain">
 /app
-  /Console          # Custom Artisan commands
-  /Enums            # Enumerations (OrderStatus, PaymentMethod, etc.)
+  /Console          # Custom Artisan commands and schedulers
+  /Enums            # PHP Enums (OrderStatus, PaymentMethod, etc.)
   /Events           # Event classes
   /Http
-    /Controllers    # Application Logic
-      /Api          # API Controllers (V1, Customer, DeliveryMan)
-      /Payment      # Payment Gateway Controllers
-      /Web          # Web Controllers (Admin, StoreFront)
-    /Middleware     # HTTP Middleware
-    /Requests       # Validation Logic (Form Requests)
-    /Resources      # API Resources (Data transformation)
-  /Models           # Eloquent Models
-  /Services         # Business Logic Services
-  /Traits           # Reusable Traits
-/bootstrap          # Framework bootstrap files
-/config             # App configuration files (database, mail, services)
-/database           # Migrations and Seeders
+    /Controllers
+      /Api          # REST API Controllers (V1/Customer, V1/DeliveryMan)
+      /Payment      # Payment Gateway Handlers (Stripe, PayPal, etc.)
+      /Web          # Inertia Controllers (Admin, StoreFront)
+    /Middleware     # Request filtering (Admin, Customer, Locale)
+    /Requests       # Form Request Validation
+    /Resources      # API Resources for JSON transformation
+  /Jobs             # Queued Jobs (Email sending, Notifications)
+  /Listeners        # Event Listeners (e.g., SendWelcomeEmail)
+  /Mail             # Mailable classes for email templates
+  /Models           # Eloquent ORM Models (User, Order, Item)
+  /Services         # Business logic separation (Service Layer)
+/config             # Configuration files (app, auth, services, payment)
+/database           # Database Migrations, Factories, and Seeders
 /public             # Web root (images, build assets) - POINT DOMAIN HERE
 /resources
+  /js               # Main JavaScript source
+    /AdminPanel     # Admin Dashboard Vue App (Entry: AdminPanel/app.js)
+    /StoreFront     # Customer Website Vue App (Entry: app.js)
+    /components     # Shared UI Components
+    /lib            # Shared utilities and libraries
   /css              # Tailwind CSS entry points
-  /js               # Vue components and Inertia pages
-    /AdminPanel     # Admin Panel Vue Components
-    /StoreFront     # StoreFront Vue Components
-    /components     # Shared Vue components
-    /lib            # Library utilities
-  /views            # Blade templates (entry points)
-/routes             # Web and API routes
-  /api              # API routes
-  /web              # Web routes
-/storage            # Logs, compiled templates, file uploads
-.env                # Environment variables (DB, API Keys)
+  /views            # Blade templates (app.blade.php entry point)
+/routes             # Application Routes
+  /api              # API Routes (V1/Admin, V1/Customer, etc.)
+  /web              # Web Routes (Admin, Storefront, Installer)
+  /console.php      # Artisan Console Routes
+/storage            # Logs, compiled templates, and user uploads
+.env                # Environment variables (DB Credentials, API Keys)
                                             </pre>
                                         </div>
                                     </div>
@@ -323,177 +304,102 @@
                                     <div class="col-md-6">
                                         <h4 id="line_feat_1">Dashboard & Analytics</h4>
                                         <ul class="intro-list">
-                                            <li><strong>Admin Dashboard:</strong> Real-time overview of orders, revenue,
-                                                and active users.</li>
-                                            <li><strong>Advanced Analytics:</strong>
+                                            <li><strong>Real-Time Overview:</strong> Monitor live orders, revenue, and active users from a central dashboard.</li>
+                                            <li><strong>Comprehensive Reports:</strong>
                                                 <ul>
-                                                    <li>Sales & Revenue Reports</li>
-                                                    <li>Top Selling Categories & Items</li>
-                                                    <li>Top Customers & Deliverymen</li>
-                                                    <li>User Activity Logs</li>
-                                                    <li>Hourly Order Trends</li>
+                                                    <li><strong>Sales & Revenue:</strong> Track daily, weekly, and monthly income.</li>
+                                                    <li><strong>Category & Item Performance:</strong> Identify top-selling dishes and categories.</li>
+                                                    <li><strong>User Activity:</strong> Analyze customer registration and retention.</li>
+                                                    <li><strong>Hourly Trends:</strong> optimize staffing based on peak order times.</li>
                                                 </ul>
                                             </li>
-                                            <li><strong>Reports:</strong> Exportable reports for sales, refunds, and
-                                                user growth.</li>
                                         </ul>
 
                                         <h4 id="line_feat_2">Order Management</h4>
                                         <ul class="intro-list">
-                                            <li><strong>Live Order Tracking:</strong> Real-time status updates from
-                                                placement to delivery.</li>
-                                            <li><strong>Order Invoice:</strong> Automatic invoice generation (A4 &
-                                                Thermal support).</li>
-                                            <li><strong>Refund System:</strong> Manage refund requests with
-                                                approval/rejection workflows.</li>
-                                            <li><strong>Order Scheduling:</strong> Customers can schedule orders for
-                                                later.</li>
-                                            <li><strong>Delivery Zone Management:</strong> Define delivery areas and
-                                                dynamic charges.</li>
+                                            <li><strong>Full Lifecycle Tracking:</strong> Manage orders from placement to delivery (Pending, Confirm, Processing, Handover, Picked Up, Delivered).</li>
+                                            <li><strong>Delivery Management:</strong> Assign orders to deliverymen manually or automatically.</li>
+                                            <li><strong>Invoice Generation:</strong> Auto-generate professional invoices for every order.</li>
+                                            <li><strong>Refund System:</strong> Handle customer refund requests with admin approval workflows.</li>
                                         </ul>
 
                                         <h4 id="line_feat_3">Food & Menu Management</h4>
                                         <ul class="intro-list">
-                                            <li><strong>Category Management:</strong> Multi-level categories (Main &
-                                                Sub-categories).</li>
-                                            <li><strong>Advanced Item Setup:</strong>
-                                                <ul>
-                                                    <li>Variations (Size, Color, etc.)</li>
-                                                    <li>Addons (Extra Cheese, Toppings)</li>
-                                                    <li>Labels (Spicy, Veg, Non-Veg)</li>
-                                                    <li>Cuisines & Menu Types</li>
-                                                </ul>
-                                            </li>
-                                            <li><strong>AI Content Generation:</strong> Auto-generate food descriptions
-                                                and names using OpenAI.</li>
-                                            <li><strong>Bulk Import/Export:</strong> Easily manage large menus.</li>
+                                            <li><strong>Advanced Item Setup:</strong> Create food items with descriptions, images, and prices.</li>
+                                            <li><strong>Variations & Addons:</strong> Support complex menu options (e.g., Size: Large, Extra Cheese).</li>
+                                            <li><strong>Categorization:</strong> Organize food into Categories and Sub-categories.</li>
+                                            <li><strong>Labels & Cuisines:</strong> Tag items (Veg, Non-Veg, Spicy) and Cuisines (Italian, Chinese) for better filtering.</li>
+                                            <li><strong>Bulk Import/Export:</strong> Easily manage large menus via Excel/CSV.</li>
                                         </ul>
-                                    </div>
 
-                                    <div class="col-md-6">
                                         <h4 id="line_feat_4">Marketing & Promotions</h4>
                                         <ul class="intro-list">
-                                            <li><strong>Coupons & Vouchers:</strong> Fixed amount or percentage-based
-                                                discounts.</li>
-                                            <li><strong>BOGO Offers:</strong> Buy One Get One campaigns.</li>
-                                            <li><strong>Happy Hours:</strong> Special pricing for specific time slots.
-                                            </li>
-                                            <li><strong>Loyalty Program:</strong> Earn points on purchases and redeem
-                                                for wallet money.</li>
-                                            <li><strong>Referral System:</strong> "Refer & Earn" for customer growth.
-                                            </li>
-                                            <li><strong>Push Notifications:</strong> Send custom alerts via Firebase
-                                                (FCM).</li>
-                                            <li><strong>Sales Popups:</strong> In-app popup announcements for offers.
-                                            </li>
-                                            <li><strong>Newsletter:</strong> Manage subscribers for email marketing.
-                                            </li>
-                                            <li><strong>Marketing Tools:</strong> Integration with Google Analytics, Tag
-                                                Manager, and Meta Pixel.</li>
+                                            <li><strong>Coupons:</strong> Create discount codes with usage limits and expiry dates.</li>
+                                            <li><strong>BOGO (Buy One Get One):</strong> Set up special offers to drive sales.</li>
+                                            <li><strong>Happy Hour:</strong> Schedule automatic discounts during specific time slots.</li>
+                                            <li><strong>Loyalty Points:</strong> Reward customers with points for every purchase, redeemable for wallet funds.</li>
+                                            <li><strong>Push Notifications:</strong> Send targeted alerts via Firebase to engage users.</li>
+                                            <li><strong>Sales Popups:</strong> Display FOMO (Fear Of Missing Out) notifications on the storefront.</li>
                                         </ul>
+                                    </div>
+                                    <!-- end col -->
 
+                                    <div class="col-md-6">
                                         <h4 id="line_feat_5">User Management</h4>
                                         <ul class="intro-list">
-                                            <li><strong>Customer CRM:</strong>
-                                                <ul>
-                                                    <li>Wallet System (Add Fund, Transfer)</li>
-                                                    <li>Order History & Reviews</li>
-                                                    <li>Customer Dashboard</li>
-                                                </ul>
-                                            </li>
-                                            <li><strong>Employee Management:</strong>
-                                                <ul>
-                                                    <li>Role-Based Access Control (RBAC)</li>
-                                                    <li>Shift Management</li>
-                                                    <li>Activity Logs</li>
-                                                </ul>
-                                            </li>
-                                            <li><strong>Deliveryman Management:</strong>
-                                                <ul>
-                                                    <li>Dedicated App Access</li>
-                                                    <li>Shift & Availability Management</li>
-                                                    <li>Performance Tracking</li>
-                                                </ul>
-                                            </li>
+                                            <li><strong>Employee Roles:</strong> Create custom roles (Manager, Accountant) with specific permissions.</li>
+                                            <li><strong>Deliveryman App:</strong> Manage delivery staff, track their shifts, and view their earnings.</li>
+                                            <li><strong>Customer Wallet:</strong> Integrated digital wallet for easy payments and refunds.</li>
+                                            <li><strong>Customer CRM:</strong> View customer order history, wallet balance, and loyalty points.</li>
                                         </ul>
 
                                         <h4 id="line_feat_6">Website & Content</h4>
                                         <ul class="intro-list">
-                                            <li><strong>Dynamic Website Setup:</strong> Customize Home, About, FAQ, and
-                                                Privacy pages from Admin.</li>
-                                            <li><strong>Blog System:</strong> Integrated blog with AI content support.
-                                            </li>
-                                            <li><strong>Announcements:</strong> Site-wide announcement bars.</li>
-                                            <li><strong>Social Media Links:</strong> Manage footer social links.</li>
+                                            <li><strong>Page Builder:</strong> customized About Us, Privacy Policy, and Terms & Conditions pages.</li>
+                                            <li><strong>Blogs:</strong> A fully functional blog module to improve SEO and customer engagement.</li>
+                                            <li><strong>FAQ System:</strong> Manage frequently asked questions to reduce support tickets.</li>
+                                            <li><strong>Social Media:</strong> Configure links to your Facebook, Twitter, and Instagram profiles.</li>
                                         </ul>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
                                         <h4 id="line_feat_7">Settings & Configuration</h4>
-                                        <ul class="intro-list" style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
-                                            <li><strong>Business Setup:</strong> Currency, Timezone, Logo, Business
-                                                Info.</li>
-                                            <li><strong>3rd Party APIs:</strong> Google Maps, Recaptcha, Firebase,
-                                                OpenAI.</li>
-                                            <li><strong>Payment Gateways:</strong> Stripe, PayPal, Razorpay,
-                                                Flutterwave, etc.</li>
-                                            <li><strong>Notification Channels:</strong> Email (SMTP), SMS (Twilio,
-                                                Msg91), Push.</li>
-                                            <li><strong>Login Settings:</strong> Social Login (Google, Facebook), OTP
-                                                Login.</li>
-                                            <li><strong>Invoice Customization:</strong> Customize invoice layout and
-                                                details.</li>
-                                            <li><strong>Cookie Consent:</strong> GDPR compliant cookie banner setup.
-                                            </li>
-                                            <li><strong>System Updates:</strong> One-click OTA updates support.</li>
+                                        <ul class="intro-list">
+                                            <li><strong>Payment Gateways:</strong> Native support for Stripe, PayPal, Razorpay, Flutterwave, and more.</li>
+                                            <li><strong>SMS Gateways:</strong> Integration with Twilio, Nexmo, and other providers for OTPs.</li>
+                                            <li><strong>Firebase Setup:</strong> Configure Firebase for Push Notifications and Authentication.</li>
+                                            <li><strong>Mail Configuration:</strong> Easy setup for SMTP (Gmail, AWS SES, Mailgun).</li>
+                                            <li><strong>System Settings:</strong> Control currency, time zone, logo, and business information.</li>
                                         </ul>
 
-                                        <h4 id="line_feat_8">System Maintenance & Tools</h4>
+                                        <h4 id="line_feat_10">Communication</h4>
                                         <ul class="intro-list">
-                                            <li><strong>Database Management:</strong>
-                                                <ul>
-                                                    <li><strong>Database Backup:</strong> Create and download SQL
-                                                        backups directly from Admin.</li>
-                                                    <li><strong>Database Clean:</strong> Tools to clear cache, sessions,
-                                                        or unused data.</li>
-                                                </ul>
-                                            </li>
-                                            <li><strong>System Health:</strong>
-                                                <ul>
-                                                    <li><strong>System Information:</strong> View server details, PHP
-                                                        version, and extensions.</li>
-                                                    <li><strong>User Activity Log:</strong> Track admin and employee
-                                                        actions for security auditing.</li>
-                                                    <li><strong>File Manager:</strong> Manage uploaded media and files.
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                            <li><strong>Live Chat:</strong> Real-time chat between Customers and Admin/Support.</li>
+                                            <li><strong>Order Support:</strong> Specific chat channels for order-related issues.</li>
                                         </ul>
 
-                                        <h4 id="line_feat_9">Security & Access</h4>
+                                        <h4 id="line_feat_8">System Maintenance</h4>
                                         <ul class="intro-list">
-                                            <li><strong>Two-Factor Authentication (2FA):</strong> Secure Admin login
-                                                with OTP (Email/SMS).</li>
-                                            <li><strong>Login Security:</strong> Configure login attempts, session
-                                                timeouts, and social logins.</li>
+                                            <li><strong>Database Backup:</strong> Create and download SQL backups directly from Admin.</li>
+                                            <li><strong>System Health:</strong> View server details, PHP version, and extensions.</li>
+                                            <li><strong>Activity Logs:</strong> Track admin and employee actions for security auditing.</li>
                                         </ul>
 
-                                        <h4 id="line_feat_10">Communication & Support</h4>
+                                        <h4 id="line_feat_9">Security</h4>
                                         <ul class="intro-list">
-                                            <li><strong>Real-time Chatting:</strong> Direct chat between Admin,
-                                                Customers, and Deliverymen.</li>
-                                            <li><strong>Refund Requests:</strong> Manage and process customer refund
-                                                requests.</li>
-                                            <li><strong>Admin Bookmarks:</strong> Quick access bookmarks for frequently
-                                                used admin pages.</li>
+                                            <li><strong>Role-Based Access:</strong> Granular permission control for all employees.</li>
+                                            <li><strong>Secure Login:</strong> Protection against brute-force attacks and session hijacking.</li>
                                         </ul>
                                     </div>
+                                    <!-- end col -->
                                 </div>
+                                <!-- end row -->
                             </div>
                         </div>
                     </section>
+
+
+
+
+
 
                     <!-- 2. Prerequisites -->
                     <section id="line2" class="section">
@@ -707,6 +613,38 @@ Zip PHP Extension
                                     <strong>Success:</strong> Once completed, you will be redirected to the Home page.
                                 </div>
 
+                                <h4 id="line4_4">4. Installation from Source Code</h4>
+                                <div class="alert alert-info">
+                                    <strong>Note:</strong> This method is for developers who want to customize the code and have purchased the Source Code license.
+                                </div>
+                                <ol class="intro-list">
+                                    <li><strong>Extract Source Code:</strong>
+                                        <p>Unzip the source code archive to your project directory.</p>
+                                    </li>
+                                    <li><strong>Install Dependencies:</strong>
+                                        <pre class="brush: bash">
+composer install
+npm install
+                                        </pre>
+                                    </li>
+                                    <li><strong>Environment Setup:</strong>
+                                        <pre class="brush: bash">cp .env.example .env</pre>
+                                        Update <code>.env</code> with your database credentials.
+                                    </li>
+                                    <li><strong>Generate Key:</strong>
+                                        <pre class="brush: bash">php artisan key:generate</pre>
+                                    </li>
+                                    <li><strong>Database Migration & Seeding:</strong>
+                                        <pre class="brush: bash">php artisan migrate --seed</pre>
+                                    </li>
+                                    <li><strong>Storage Link:</strong>
+                                        <pre class="brush: bash">php artisan storage:link</pre>
+                                    </li>
+                                    <li><strong>Build Assets:</strong>
+                                        <pre class="brush: bash">npm run build</pre>
+                                    </li>
+                                </ol>
+
                                 <div class="alert alert-info">
                                     <strong>Access Routes:</strong>
                                     <ul class="intro-list">
@@ -829,6 +767,14 @@ Zip PHP Extension
                                     <li><strong>Recaptcha:</strong> Configure Google Recaptcha (v2/v3) Site Key and
                                         Secret Key for security against bots.</li>
                                 </ul>
+
+                                <h4 id="line5_8">Real-Time Updates (Push Notifications)</h4>
+                                <p>This project uses <strong>Firebase Cloud Messaging (FCM)</strong> for real-time order tracking and chat updates. This approach is serverless and does not require complex WebSocket configurations.</p>
+                                <p>Chat messages and order status updates are delivered via FCM data payloads, allowing for instant communication and updates on the Admin Panel and Storefront without a persistent socket connection.</p>
+                                <div class="alert alert-info">
+                                    <strong>Configuration:</strong> Ensure you have correctly set up your Firebase credentials in the <strong>Settings > Firebase Setup</strong> section.
+                                </div>
+                                <p>The system uses these credentials to push data updates to the Admin Panel and Storefront instantly.</p>
                             </div>
                         </div>
                     </section>
