@@ -38,7 +38,7 @@ html.dark .intro1 {
 }
 
 html.dark .intro1 a {
-    color: #F16811 !important;
+    color: #e54462 !important;
 }
 
 html.dark a {
@@ -46,23 +46,23 @@ html.dark a {
 }
 
 html.dark a:hover {
-    color: #F16811;
+    color: #e54462;
 }
 
 html.dark .intro2 {
-    background-color: #F16811;
+    background-color: #e54462;
     border-color: #DE7844;
 }
 
 html.dark .btn-primary {
-    background-color: #F16811;
+    background-color: #e54462;
     border-color: #DE7844;
     color: #000;
 }
 
 html.dark .btn-primary:hover {
     background-color: #DE7844;
-    border-color: #F16811;
+    border-color: #e54462;
 }
 
 html.dark .btn-info {
@@ -181,9 +181,9 @@ html.dark .docs-sidebar::-webkit-scrollbar-thumb {
 .docs-sidebar .nav > .active:hover > a,
 .docs-sidebar .nav > .active:focus > a {
     font-weight: 700;
-    color: #F16811;
-    border-left-color: #F16811;
-    background-color: rgba(241, 104, 17, 0.05);
+    color: #e54462;
+    border-left-color: #e54462;
+    background-color: rgba(229, 68, 98, 0.05);
 }
 
 .docs-sidebar .nav .nav {
@@ -216,9 +216,9 @@ html.dark .docs-sidebar .nav > li > a:hover {
 html.dark .docs-sidebar .nav > .active > a,
 html.dark .docs-sidebar .nav > .active:hover > a,
 html.dark .docs-sidebar .nav > .active:focus > a {
-    color: #F16811;
-    border-left-color: #F16811;
-    background-color: rgba(241, 104, 17, 0.1);
+    color: #e54462;
+    border-left-color: #e54462;
+    background-color: rgba(229, 68, 98, 0.1);
 }
 
 html.dark .docs-sidebar .nav .nav > li > a {
@@ -304,13 +304,13 @@ html.dark .copy-btn:hover {
     z-index: 99;
     border: none;
     outline: none;
-    background-color: #F16811;
+    background-color: #e54462;
     color: white;
     cursor: pointer;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(241, 104, 17, 0.3);
+    box-shadow: 0 4px 10px rgba(229, 68, 98, 0.3);
     font-size: 18px;
     transition: all 0.3s ease;
     display: flex;
@@ -321,7 +321,7 @@ html.dark .copy-btn:hover {
 #myBtn:hover {
     background-color: #d65a0e;
     transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(241, 104, 17, 0.4);
+    box-shadow: 0 6px 15px rgba(229, 68, 98, 0.4);
 }
 
 #myBtn i {
@@ -402,7 +402,7 @@ html.dark table th, html.dark table td { border-color: #444; }
 
 .docs-sidebar .nav > li > a:hover,
 .docs-sidebar .nav > li.active > a {
-    color: #0E97EE;
+    color: #e54462;
     background: transparent;
 }
 
@@ -434,8 +434,8 @@ html.dark table th, html.dark table td { border-color: #444; }
 /* Sub-menu Hover/Active */
 .docs-sidebar .nav .nav > li > a:hover,
 .docs-sidebar .nav .nav > li.active > a {
-    color: #0E97EE;
-    border-left: 2px solid #0E97EE;
+    color: #e54462;
+    border-left: 2px solid #e54462;
     background: transparent;
 }
 
@@ -446,7 +446,7 @@ html.dark .docs-sidebar .nav > li > a {
 
 html.dark .docs-sidebar .nav > li > a:hover,
 html.dark .docs-sidebar .nav > li.active > a {
-    color: #F16811;
+    color: #e54462;
 }
 
 html.dark .docs-sidebar .nav .nav {
@@ -460,7 +460,7 @@ html.dark .docs-sidebar .nav .nav > li > a {
 html.dark .docs-sidebar .nav .nav > li > a:hover,
 html.dark .docs-sidebar .nav .nav > li.active > a {
     color: #fff;
-    border-left: 2px solid #F16811;
+    border-left: 2px solid #e54462;
 }
 
 /* Sidebar Affix Width Fix */

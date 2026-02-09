@@ -298,7 +298,7 @@ pre code {
 }
 
 .intro1 a {
-    color: #0E97EE !important;
+    color: #e54462 !important;
 }
 
 .intro a {
@@ -339,14 +339,14 @@ pre code {
 }
 
 mark {
-    background-color: #0E97EE;
+    background-color: #e54462;
     color: #ffffff;
     padding: 0 10px;
 }
 
 a:focus,
 a:hover {
-    color: #0E97EE;
+    color: #e54462;
 }
 
 .intro2 i {
@@ -355,7 +355,7 @@ a:hover {
 }
 
 .intro2 {
-    background-color: #0E97EE;
+    background-color: #e54462;
     border: 2px solid #2187BB;
     border-radius: 5px;
     color: #ffffff;
@@ -377,13 +377,13 @@ a:hover {
 }
 
 .btn-primary {
-    background-color: #0E97EE;
+    background-color: #e54462;
     border: 1px solid #2187BB;
 }
 
 .btn-primary:hover {
     background-color: #2187BB;
-    border: 1px solid #0E97EE;
+    border: 1px solid #e54462;
 }
 
 .btn-info {
@@ -399,7 +399,7 @@ a:hover {
 .navbar-inverse .navbar-nav>.active>a,
 .navbar-inverse .navbar-nav>.active>a:hover,
 .navbar-inverse .navbar-nav>.active>a:focus {
-    background-color: #0E97EE;
+    background-color: #e54462;
     color: #fff;
 }
 

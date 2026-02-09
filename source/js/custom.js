@@ -117,25 +117,15 @@
         setTimeout(addCopyButtons, 1000);
         setTimeout(addCopyButtons, 3000);
 
-        // Back to Top Button Logic
-        var $mybutton = $('#myBtn');
-        
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 500) {
-                $mybutton.css('display', 'flex');
-            } else {
-                $mybutton.hide();
-            }
-        });
-
-        $mybutton.click(function() {
-            $('html, body').animate({scrollTop: 0}, 800);
-            return false;
-        });
-
         // Dark Mode Toggle Logic (moved from index.html)
+        if (localStorage.getItem('darkMode') === 'true') {
+            $('html').addClass('dark');
+        }
+
         $('#mode').click(function() {
             $('html').toggleClass('dark');
+            var isDark = $('html').hasClass('dark');
+            localStorage.setItem('darkMode', isDark);
         });
     });
 
