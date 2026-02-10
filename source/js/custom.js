@@ -127,6 +127,21 @@
             var isDark = $('html').hasClass('dark');
             localStorage.setItem('darkMode', isDark);
         });
+
+        var $btn = $('#myBtn');
+        $(window).on('scroll', function() {
+            if ($(this).scrollTop() > 300) {
+                $btn.stop(true, true).fadeIn(200, function() {
+                    $(this).css('display', 'flex');
+                });
+            } else {
+                $btn.stop(true, true).fadeOut(200);
+            }
+        });
+        $btn.on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, 600);
+        });
     });
 
 })(jQuery);
