@@ -111,7 +111,7 @@ html.dark #mode .dark {
 #mode {
     background: #f1f1f1;
     color: #333;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -131,7 +131,12 @@ body {
     color: #444;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 600;
     letter-spacing: -0.02em;
 }
@@ -152,18 +157,21 @@ h1, h2, h3, h4, h5, h6 {
 .docs-sidebar::-webkit-scrollbar {
     width: 6px;
 }
+
 .docs-sidebar::-webkit-scrollbar-track {
     background: transparent;
 }
+
 .docs-sidebar::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 3px;
 }
+
 html.dark .docs-sidebar::-webkit-scrollbar-thumb {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-.docs-sidebar .nav > li > a {
+.docs-sidebar .nav>li>a {
     padding: 8px 15px;
     border-left: 3px solid transparent;
     transition: all 0.2s ease;
@@ -171,15 +179,15 @@ html.dark .docs-sidebar::-webkit-scrollbar-thumb {
     font-size: 14px;
 }
 
-.docs-sidebar .nav > li > a:hover {
+.docs-sidebar .nav>li>a:hover {
     background-color: transparent;
     color: #000;
     border-left-color: #ddd;
 }
 
-.docs-sidebar .nav > .active > a,
-.docs-sidebar .nav > .active:hover > a,
-.docs-sidebar .nav > .active:focus > a {
+.docs-sidebar .nav>.active>a,
+.docs-sidebar .nav>.active:hover>a,
+.docs-sidebar .nav>.active:focus>a {
     font-weight: 700;
     color: #e54462;
     border-left-color: #e54462;
@@ -191,11 +199,11 @@ html.dark .docs-sidebar::-webkit-scrollbar-thumb {
     padding-bottom: 10px;
 }
 
-.docs-sidebar .nav > .active > .nav {
+.docs-sidebar .nav>.active>.nav {
     display: block;
 }
 
-.docs-sidebar .nav .nav > li > a {
+.docs-sidebar .nav .nav>li>a {
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 30px;
@@ -204,57 +212,61 @@ html.dark .docs-sidebar::-webkit-scrollbar-thumb {
 }
 
 /* Dark Mode Sidebar */
-html.dark .docs-sidebar .nav > li > a {
+html.dark .docs-sidebar .nav>li>a {
     color: #eee;
 }
 
-html.dark .docs-sidebar .nav > li > a:hover {
+html.dark .docs-sidebar .nav>li>a:hover {
     color: #fff;
     border-left-color: #555;
 }
 
-html.dark .docs-sidebar .nav > .active > a,
-html.dark .docs-sidebar .nav > .active:hover > a,
-html.dark .docs-sidebar .nav > .active:focus > a {
+html.dark .docs-sidebar .nav>.active>a,
+html.dark .docs-sidebar .nav>.active:hover>a,
+html.dark .docs-sidebar .nav>.active:focus>a {
     color: #e54462;
     border-left-color: #e54462;
     background-color: rgba(229, 68, 98, 0.1);
 }
 
-html.dark .docs-sidebar .nav .nav > li > a {
+html.dark .docs-sidebar .nav .nav>li>a {
     color: #aaa;
 }
 
-html.dark .docs-sidebar .nav .nav > li > a:hover,
-html.dark .docs-sidebar .nav .nav > li.active > a {
+html.dark .docs-sidebar .nav .nav>li>a:hover,
+html.dark .docs-sidebar .nav .nav>li.active>a {
     color: #fff;
 }
 
 /* Code Blocks */
-pre, .syntaxhighlighter {
+pre,
+.syntaxhighlighter {
     border: none !important;
     border-radius: 8px !important;
     background-color: #f8f9fa !important;
     padding: 15px !important;
     position: relative !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
-html.dark pre, html.dark .syntaxhighlighter {
+html.dark pre,
+html.dark .syntaxhighlighter {
     background-color: #1e1e1e !important;
     color: #d4d4d4 !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Fix SyntaxHighlighter specific styles */
 .syntaxhighlighter table td.gutter .line {
     border-right: 1px solid #ddd !important;
 }
+
 html.dark .syntaxhighlighter table td.gutter .line {
     border-right: 1px solid #444 !important;
     background-color: #252526 !important;
     color: #858585 !important;
 }
+
 html.dark .syntaxhighlighter table td.code {
     background-color: #1e1e1e !important;
 }
@@ -267,15 +279,27 @@ html.dark .syntaxhighlighter table td.code {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 4px 10px;
-    font-size: 12px;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    font-size: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     color: #555;
     transition: all 0.2s;
     opacity: 0;
 }
 
-pre:hover .copy-btn, .syntaxhighlighter:hover .copy-btn {
+.copy-btn::before {
+    content: '⧉';
+    font-size: 14px;
+    line-height: 1;
+}
+
+pre:hover .copy-btn,
+.syntaxhighlighter:hover .copy-btn {
     opacity: 1;
 }
 
@@ -293,6 +317,11 @@ html.dark .copy-btn {
 html.dark .copy-btn:hover {
     background: #444;
     color: #fff;
+}
+
+/* Hide copy button entirely */
+.copy-btn {
+    display: none !important;
 }
 
 /* Back to Top Button */
@@ -332,7 +361,7 @@ html.dark .copy-btn:hover {
 .alert {
     border-radius: 8px;
     border: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .alert-info {
@@ -359,10 +388,25 @@ html.dark .copy-btn:hover {
     border-left: 4px solid #f44336;
 }
 
-html.dark .alert-info { background-color: rgba(33, 150, 243, 0.1); color: #90caf9; }
-html.dark .alert-success { background-color: rgba(76, 175, 80, 0.1); color: #a5d6a7; }
-html.dark .alert-warning { background-color: rgba(255, 152, 0, 0.1); color: #ffcc80; }
-html.dark .alert-danger { background-color: rgba(244, 67, 54, 0.1); color: #ef9a9a; }
+html.dark .alert-info {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #90caf9;
+}
+
+html.dark .alert-success {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #a5d6a7;
+}
+
+html.dark .alert-warning {
+    background-color: rgba(255, 152, 0, 0.1);
+    color: #ffcc80;
+}
+
+html.dark .alert-danger {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #ef9a9a;
+}
 
 /* Tables */
 table {
@@ -384,8 +428,14 @@ table thead th {
     border-bottom: 2px solid #dee2e6;
 }
 
-html.dark table { color: #eee; }
-html.dark table th, html.dark table td { border-color: #444; }
+html.dark table {
+    color: #eee;
+}
+
+html.dark table th,
+html.dark table td {
+    border-color: #444;
+}
 
 
 
@@ -394,58 +444,64 @@ html.dark table th, html.dark table td { border-color: #444; }
 /* Sidebar Styles */
 
 /* Parent Menu Items */
-.docs-sidebar .nav > li > a {
+.docs-sidebar .nav>li>a {
     color: #555;
     font-weight: 600;
     border-left: 2px solid transparent;
 }
 
-.docs-sidebar .nav > li > a:hover,
-.docs-sidebar .nav > li.active > a {
+.docs-sidebar .nav>li>a:hover,
+.docs-sidebar .nav>li.active>a {
     color: #e54462;
     background: transparent;
 }
 
 /* Sub-menu Container */
 .docs-sidebar .nav .nav {
-    display: none; /* Hide by default */
+    display: none;
+    /* Hide by default */
     padding-bottom: 10px;
     padding-left: 0;
-    margin-left: 17px; /* Indentation */
-    border-left: 1px solid #ddd; /* Vertical guide line */
+    margin-left: 17px;
+    /* Indentation */
+    border-left: 1px solid #ddd;
+    /* Vertical guide line */
 }
 
-.docs-sidebar .nav > .active > .nav {
-    display: block; /* Show when parent is active */
+.docs-sidebar .nav>.active>.nav {
+    display: block;
+    /* Show when parent is active */
 }
 
 /* Sub-menu Items */
-.docs-sidebar .nav .nav > li > a {
+.docs-sidebar .nav .nav>li>a {
     padding-left: 15px;
     padding-top: 4px;
     padding-bottom: 4px;
     font-size: 13px;
     font-weight: 400;
     color: #777;
-    border-left: 2px solid transparent; /* Prepare for active border */
-    margin-left: -1px; /* Overlap with container border */
+    border-left: 2px solid transparent;
+    /* Prepare for active border */
+    margin-left: -1px;
+    /* Overlap with container border */
 }
 
 /* Sub-menu Hover/Active */
-.docs-sidebar .nav .nav > li > a:hover,
-.docs-sidebar .nav .nav > li.active > a {
+.docs-sidebar .nav .nav>li>a:hover,
+.docs-sidebar .nav .nav>li.active>a {
     color: #e54462;
     border-left: 2px solid #e54462;
     background: transparent;
 }
 
 /* Dark Mode Adjustments */
-html.dark .docs-sidebar .nav > li > a {
+html.dark .docs-sidebar .nav>li>a {
     color: #eee;
 }
 
-html.dark .docs-sidebar .nav > li > a:hover,
-html.dark .docs-sidebar .nav > li.active > a {
+html.dark .docs-sidebar .nav>li>a:hover,
+html.dark .docs-sidebar .nav>li.active>a {
     color: #e54462;
 }
 
@@ -453,19 +509,22 @@ html.dark .docs-sidebar .nav .nav {
     border-left: 1px solid #444;
 }
 
-html.dark .docs-sidebar .nav .nav > li > a {
+html.dark .docs-sidebar .nav .nav>li>a {
     color: #aaa;
 }
 
-html.dark .docs-sidebar .nav .nav > li > a:hover,
-html.dark .docs-sidebar .nav .nav > li.active > a {
+html.dark .docs-sidebar .nav .nav>li>a:hover,
+html.dark .docs-sidebar .nav .nav>li.active>a {
     color: #fff;
     border-left: 2px solid #e54462;
 }
 
 /* Sidebar Affix Width Fix */
 @media (max-width: 991px) {
-    .docs-sidebar.affix, .docs-sidebar.affix-top, .docs-sidebar.affix-bottom {
+
+    .docs-sidebar.affix,
+    .docs-sidebar.affix-top,
+    .docs-sidebar.affix-bottom {
         position: static !important;
         width: auto !important;
     }
@@ -473,7 +532,7 @@ html.dark .docs-sidebar .nav .nav > li.active > a {
 
 @media (min-width: 992px) {
     .docs-sidebar.affix {
-        position: fixed; 
+        position: fixed;
         top: 30px;
         width: 213px;
         max-height: calc(100vh - 40px);
